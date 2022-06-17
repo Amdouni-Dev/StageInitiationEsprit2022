@@ -1,8 +1,9 @@
 package com.server.server.Dto;
 
-import java.io.Serializable;
+import java.sql.Timestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.server.server.Entity.Employe;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,14 +17,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ClientDto implements Serializable{
+public class NotificationDto {
   private long id;
 
-  private String nom;
-  private String prenom;
-  private String email;
-  private String adresse;
-  private String telephone;
-  private String password;
+  private String description;
+  private Timestamp dateCreation;
+  private transient Employe employe;
 }
-

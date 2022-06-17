@@ -27,6 +27,7 @@ import lombok.Setter;
     private String nom;
     private String prenom;
     private String email;
+    private String adresse;
     private String telephone;
     private String password;
 
