@@ -38,6 +38,8 @@ public class Promotion {
   @ManyToOne()
   private Employe employe;
 
+  private long id_produit;
+
   /*@OneToOne()
   private Produit produit;*/
 

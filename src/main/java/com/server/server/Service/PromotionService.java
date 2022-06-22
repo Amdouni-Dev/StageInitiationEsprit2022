@@ -1,5 +1,6 @@
 package com.server.server.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,5 +33,40 @@ public class PromotionService {
     }
   }
 
+  //create promo
+  public ResponseEntity<Promotion> addPromotion(Promotion promotion, long id_produit) {
+    if (promotion == null) {
+      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    promotion.setDateCreation(new Timestamp(System.currentTimeMillis()));
+    promotion.setId_produit(id_produit);
+    promotionRepository.save(promotion);
+    return ResponseEntity.ok(promotion);
+
+  }
+
+  //update promo
+  public ResponseEntity<Promotion> updatePromotion(long id, Promotion promotion) {
+
+    if (promotion == null) {
+      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+    Optional<Promotion> optionalPromotion = promotionRepository.findById(id);
+
+    if (optionalPromotion.isPresent()) {
+      promotion.setId(id);
+      promotion.setDateCreation(new Timestamp(System.currentTimeMillis()));
+      promotionRepository.save(promotion);
+      return ResponseEntity.ok(optionalPromotion.get());
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+
+  //delete promo
+  public void deletePromotion(long id) {
+    promotionRepository.deleteById(id);
+  }
 
 }

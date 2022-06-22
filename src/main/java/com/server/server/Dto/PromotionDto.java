@@ -27,6 +27,8 @@ public class PromotionDto {
   private Date dateFin;
   private int pourcentageReduction;
   private transient Employe employe;
+  private long id_produit;
+
   /*private transient Produit produit;*/
 
 }
