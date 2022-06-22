@@ -14,6 +14,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class AvisDto {
+public class ReclamationDto {
   private long id;
 }

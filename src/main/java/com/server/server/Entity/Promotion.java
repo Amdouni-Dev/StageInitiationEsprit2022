@@ -8,9 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
-import com.server.server.Dto.EmployeDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,6 +35,8 @@ public class Promotion {
 
   @ManyToOne()
   private Employe employe;
+
+  private long id_produit;
 
   /*@OneToOne()
   private Produit produit;*/
