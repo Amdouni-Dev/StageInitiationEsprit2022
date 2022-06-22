@@ -36,6 +36,7 @@ public class ProduitController {
     };
 
   }
+
   //get product by id
   @RequestMapping(value = "/produit/{id}")
   public String getProductById(@PathVariable("id") long id) {
