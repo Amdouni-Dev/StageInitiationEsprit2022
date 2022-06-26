@@ -31,4 +31,6 @@ import lombok.Setter;
     private String telephone;
     private String password;
 
+    private String verificationCode;
+    private boolean enabled;
 }
