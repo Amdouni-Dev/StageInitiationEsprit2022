@@ -1,18 +1,19 @@
 package com.server.server.Entity;
 
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.*;
 
-  @Data
+
+
+@Data
   @NoArgsConstructor
   @AllArgsConstructor
   @Getter
@@ -33,4 +34,8 @@ import lombok.Setter;
 
     private String verificationCode;
     private boolean enabled;
+
+  @JsonIgnore
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
+  private List<Avis> avis;
 }
