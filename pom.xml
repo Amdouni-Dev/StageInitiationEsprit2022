@@ -8,6 +8,12 @@
         <version>2.7.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+    <!-- for cron -->
+    <groupId>com.shengwang.demo</groupId>
+    <artifactId>spring-scheduler-hello-world</artifactId>
+
+
+
     <groupId>com.server</groupId>
     <artifactId>Server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
