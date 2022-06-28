@@ -20,7 +20,7 @@ import com.server.server.Dto.PromotionDto;
 import com.server.server.Entity.Promotion;
 import com.server.server.Service.PromotionService;
 
-@RequestMapping("/avis")
+@RequestMapping("/oauth")
 @RestController
 public class AvisController {
 

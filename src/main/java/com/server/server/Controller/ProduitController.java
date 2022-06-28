@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
+import com.server.server.Entity.Produit;
+import com.server.server.Service.ProduitService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -54,7 +56,16 @@ public class ProduitController {
 
   }
 
+  private final ProduitService produitService;
 
+  public ProduitController(ProduitService produitService) {
+    this.produitService = produitService;
+  }
+
+  @GetMapping("/list")
+  public Iterable<Produit> list() {
+    return produitService.list();
+  }
 
 
 }
