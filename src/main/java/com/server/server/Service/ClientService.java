@@ -110,5 +110,17 @@ public class ClientService {
     return clientRepository.existsByEmail(email);
   }
 
+
+  //get client by id
+  public ResponseEntity<Client> getClient(long id) {
+
+    Optional<Client> optionalClient = clientRepository.findById(id);
+    if (optionalClient.isPresent()) {
+      return ResponseEntity.ok(optionalClient.get());
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+
 }
 

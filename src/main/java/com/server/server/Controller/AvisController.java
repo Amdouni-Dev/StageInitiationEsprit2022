@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.server.server.Dto.AvisDto;
 import com.server.server.Dto.PromotionDto;
+import com.server.server.Entity.Avis;
 import com.server.server.Entity.Promotion;
+import com.server.server.Service.AvisService;
 import com.server.server.Service.PromotionService;
 
 @RequestMapping("/oauth")
@@ -30,8 +33,22 @@ public class AvisController {
   public final static String NULL = "ID NULL DETECTED";
 
   @Autowired
-  private PromotionService promotionService;
+  private AvisService avisService;
   @Autowired
   private ModelMapper modelMapper;
 
+  // insert a review
+  @PostMapping("/addReview/{id_produit}/{id_client}")
+  public ResponseEntity<Object> addReview(@RequestBody AvisDto avisDto, @PathVariable("id_produit") long id_produit, @PathVariable("id_client") long id_client) {
+    Avis avisReq = modelMapper.map(avisDto,Avis.class);
+    ResponseEntity<Avis> avis = avisService.addReview(avisReq,id_produit,id_client);
+    if (avis.getStatusCodeValue() == 200) {
+      AvisDto avisRes = modelMapper.map(avis.getBody(),AvisDto.class);
+      return new ResponseEntity<>(avisRes, HttpStatus.OK);
+    } else if (avis.getStatusCodeValue() == 400) {
+      return new ResponseEntity<>(BAD_REQUEST, HttpStatus.BAD_REQUEST);
+    } else {
+      return new ResponseEntity<>(FOUND, HttpStatus.FOUND);
+    }
+  }
 }

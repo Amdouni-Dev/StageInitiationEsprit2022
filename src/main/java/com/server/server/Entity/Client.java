@@ -38,4 +38,13 @@ import java.util.*;
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
   private List<Avis> avis;
+
+  @JsonIgnore
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
+  private List<Commande> commandes;
+
+  @JsonIgnore
+  @OneToOne(cascade = CascadeType.MERGE,mappedBy = "client")
+  private Panier panier;
+
 }

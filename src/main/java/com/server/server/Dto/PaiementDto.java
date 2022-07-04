@@ -1,7 +1,12 @@
 package com.server.server.Dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
@@ -9,8 +14,6 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ProduitDto {
-    private long id;
-    private String nom;
-
+public class PaiementDto {
+  private long id_paiement;
 }

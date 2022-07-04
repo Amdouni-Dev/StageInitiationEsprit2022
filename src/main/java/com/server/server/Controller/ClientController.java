@@ -1,6 +1,7 @@
 package com.server.server.Controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Optional;
 
 import javax.mail.MessagingException;
 
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.server.server.Dto.ClientDto;
 import com.server.server.Entity.Client;
 import com.server.server.Payload.Response.JwtResponse;
+import com.server.server.Repository.ClientRepository;
 import com.server.server.Security.Jwt.JwtUtils;
 import com.server.server.Security.Service.ClientDetails;
 import com.server.server.Service.ClientService;
@@ -38,6 +40,8 @@ public class ClientController {
 
   @Autowired
   ClientService clientService;
+  @Autowired
+  ClientRepository clientRepository;
   @Autowired
   private ModelMapper modelMapper;
   @Autowired
@@ -89,5 +93,22 @@ public class ClientController {
         clientDetails.getId(),
         clientDetails.getEmail()
     ), HttpStatus.OK);
+  }
+
+
+  //get client by id
+  @GetMapping(value = "/client/{id}")
+  public ResponseEntity<Object> getClient(@PathVariable("id") long id) {
+    ResponseEntity<Client> client = clientService.getClient(id);
+    if (client.getStatusCodeValue() == 200) {
+      ClientDto clientDto = modelMapper.map(client.getBody(), ClientDto.class);
+      return new ResponseEntity<>(clientDto, HttpStatus.OK);
+    } else if (client.getStatusCodeValue() == 404) {
+      return new ResponseEntity<>(NOT_FOUND, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(NULL, HttpStatus.OK);
+
+    }
+
   }
 }

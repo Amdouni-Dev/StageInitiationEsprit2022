@@ -1,10 +1,9 @@
 package com.server.server.Dto;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.server.server.Entity.Employe;
+import com.server.server.Entity.Client;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,14 +17,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class PromotionDto {
-  private long id;
-
-  private String description;
-  private Timestamp dateCreation;
-  private Date dateDebut;
-  private Date dateFin;
-  private int pourcentageReduction;
-  private transient Employe employe;
+public class CommandeDto {
+  private long id_commande;
+  private String  etat;
+  private String  adresse;
+  private Date date_commande;
   private long id_produit;
+  private transient Client client;
 }
