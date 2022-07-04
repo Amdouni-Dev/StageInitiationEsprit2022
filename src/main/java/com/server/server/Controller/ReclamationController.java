@@ -10,6 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
 import com.server.server.Service.ReclamationService;
 
 @RequestMapping("/oauth")
@@ -17,6 +22,7 @@ import com.server.server.Service.ReclamationService;
 public class ReclamationController {
   @Autowired
   ReclamationService reclamationService;
+
   public final static String FOUND = "FOUND";
   public final static String BAD_REQUEST = "BAD_REQUEST";
   public final static String NOT_FOUND = "NOT_FOUND";
@@ -59,5 +65,6 @@ public class ReclamationController {
       return new ResponseEntity<>(FOUND, HttpStatus.FOUND);
     }
   }
+
 
 }

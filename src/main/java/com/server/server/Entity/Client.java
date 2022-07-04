@@ -47,8 +47,10 @@ import java.util.*;
   @OneToOne(cascade = CascadeType.MERGE,mappedBy = "client")
   private Panier panier;
 
+
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
   private List<Reclamation> reclamations;
+
 
 }

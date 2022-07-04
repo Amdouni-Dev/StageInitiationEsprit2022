@@ -3,7 +3,9 @@ package com.server.server.Dto;
 import java.sql.Timestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import com.server.server.Entity.Commande;
+
 import com.server.server.Entity.Employe;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +22,7 @@ import lombok.Setter;
 @Setter
 public class NotificationDto {
   private long id;
+
 
 
   private String msgBody;

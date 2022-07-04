@@ -1,5 +1,6 @@
 package com.server.server.Service;
 
+
 import com.server.server.Entity.Avis;
 import com.server.server.Entity.Client;
 import com.server.server.Entity.Commande;
@@ -20,10 +21,12 @@ import org.springframework.core.io.FileSystemResource;
 import java.io.File;
 import java.util.Optional;
 import javax.mail.MessagingException;
+
 @Service
 public class NotificationService {
   @Autowired
   NotificationRepository notificationRepository;
+
   @Autowired
   CommandeRepository commandeRepository;
   @Autowired private JavaMailSender javaMailSender;

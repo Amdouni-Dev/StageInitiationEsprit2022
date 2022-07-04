@@ -1,6 +1,7 @@
 package com.server.server.Service;
 
 import java.sql.Timestamp;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,4 +39,19 @@ public class AvisService {
     return ResponseEntity.ok(avis);
 
   }
+
+
+  // delete  review by idProduit
+
+  public void deleteAvisByProduit(long id_produit) {
+    avisRepository.deleteAvisByProduit(id_produit);
+  }
+
+
+ public void deleteAvisnew(long id_produit,long id_client) {
+   avisRepository.deleteAvisnew(id_produit,id_client);
+ }
+
+
+
 }

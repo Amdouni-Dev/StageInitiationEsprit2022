@@ -51,4 +51,21 @@ public class AvisController {
       return new ResponseEntity<>(FOUND, HttpStatus.FOUND);
     }
   }
+
+
+//
+  @DeleteMapping(value = "/deleteAvisByProduit/{id_produit}")
+  public  void deleteAvisByProduit(@PathVariable("id_produit") long id_produit) {
+
+    avisService.deleteAvisByProduit(id_produit);
+
+  }
+
+  @DeleteMapping(value = "/deleteAvisnew/{id_produit}/{id_client}")
+  public  void deleteAvisBynew(@PathVariable("id_produit") long id_produit,@PathVariable("id_client") long id_client) {
+
+    avisService.deleteAvisnew(id_produit,id_client);
+  }
+
+
 }

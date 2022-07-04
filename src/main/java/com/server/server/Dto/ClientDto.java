@@ -1,10 +1,19 @@
 package com.server.server.Dto;
 
 import java.io.Serializable;
+
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.server.server.Entity.*;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.server.server.Entity.Avis;
+import com.server.server.Entity.Client;
+import com.server.server.Entity.Commande;
+import com.server.server.Entity.Panier;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,6 +39,8 @@ public class ClientDto implements Serializable{
   private transient Avis avis;
   private transient Commande commande;
   private transient Panier panier;
+
   private transient Reclamation reclamation;
+
 }
 

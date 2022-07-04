@@ -1,5 +1,6 @@
 package com.server.server.Service;
 
+
 import com.server.server.Entity.Client;
 
 import com.server.server.Entity.Reclamation;
@@ -27,22 +28,23 @@ public class ReclamationService {
     ReclamationRepository reclamationRepository;
     @Autowired
     ClientRepository clientRepository;
-    @Autowired private JavaMailSender javaMailSender;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     /*@Value("${spring.mail.username}") private String sender;*/
 
     // Method 1
     // To send a simple email
-    public ResponseEntity<Reclamation> reclamMail(Reclamation reclamation, long id_client)
-    {
+    public ResponseEntity<Reclamation> reclamMail(Reclamation reclamation, long id_client) {
         if (reclamation == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);}
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         // Try block to check for exceptions
         try {
 
             // Creating a simple mail message
             SimpleMailMessage mailMessage = new SimpleMailMessage();
-            Optional<Client> client  = clientRepository.findById(id_client);
+            Optional<Client> client = clientRepository.findById(id_client);
             // Setting up necessary details
             mailMessage.setFrom(client.get().getEmail());
             mailMessage.setTo("benrjebferiel@gmail.com");
@@ -56,18 +58,19 @@ public class ReclamationService {
 
         // Catch block to handle the exceptions
         catch (Exception e) {
-            System.out.println("Error while Sending Mail") ;
+            System.out.println("Error while Sending Mail");
         }
         return ResponseEntity.ok(reclamation);
     }
 
     // Method 2
     // To send an email with attachment
-    public ResponseEntity<Reclamation> reclamMailAttachement (Reclamation reclamation,long id_client)
-    { if (reclamation == null) {
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);}
+    public ResponseEntity<Reclamation> reclamMailAttachement(Reclamation reclamation, long id_client) {
+        if (reclamation == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         // Creating a mime message
-        Optional<Client> client  = clientRepository.findById(id_client);
+        Optional<Client> client = clientRepository.findById(id_client);
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper;
 
@@ -97,9 +100,9 @@ public class ReclamationService {
         catch (MessagingException e) {
 
             // Display message when exception occurred
-            System.out.println("Error while Sending Mail") ;
+            System.out.println("Error while Sending Mail");
         }
         return ResponseEntity.ok(reclamation);
     }
-
 }
+

@@ -27,13 +27,14 @@ public class Notification {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
+
   private String msgBody;
   private String subject;
   private String attachment;
 
   @ManyToOne
   private Commande commande;
-  @ManyToOne
+  @ManyToOne()
   private Employe employe;
 
 }
