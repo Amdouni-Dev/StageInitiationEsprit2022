@@ -10,6 +10,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Collection;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 @NoArgsConstructor
@@ -19,5 +21,5 @@ import lombok.Setter;
 public class PanierDto {
   private long id_panier;
   private transient Client client;
-  private long id_produit;
+  private Collection<Integer> id_produit;
 }

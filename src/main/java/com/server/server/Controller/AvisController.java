@@ -37,7 +37,7 @@ public class AvisController {
   @Autowired
   private ModelMapper modelMapper;
 
-  // insert a review
+  // insert Review
   @PostMapping("/addReview/{id_produit}/{id_client}")
   public ResponseEntity<Object> addReview(@RequestBody AvisDto avisDto, @PathVariable("id_produit") long id_produit, @PathVariable("id_client") long id_client) {
     Avis avisReq = modelMapper.map(avisDto,Avis.class);
@@ -61,10 +61,10 @@ public class AvisController {
 
   }
 
-  @DeleteMapping(value = "/deleteAvisnew/{id_produit}/{id_client}")
-  public  void deleteAvisBynew(@PathVariable("id_produit") long id_produit,@PathVariable("id_client") long id_client) {
+  @DeleteMapping(value = "/deleteAvisByProduitAndClient/{id_produit}/{id_client}")
+  public  void deleteAvisByProduitAndClient(@PathVariable("id_produit") long id_produit,@PathVariable("id_client") long id_client) {
 
-    avisService.deleteAvisnew(id_produit,id_client);
+    avisService.deleteAvisByProduitAndClient(id_produit,id_client);
   }
 
 

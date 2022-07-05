@@ -1,5 +1,6 @@
 package com.server.server.Dto;
 
+import java.util.Collection;
 import java.util.Date;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class CommandeDto {
   private String  etat;
   private String  adresse;
   private Date date_commande;
-  private long id_produit;
+  private Collection<Integer> id_produit;
   private transient Client client;
   private transient List<Notification> notifications;
 

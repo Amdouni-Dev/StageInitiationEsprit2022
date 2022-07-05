@@ -20,8 +20,10 @@ import javax.transaction.Transactional;
 public interface AvisRepository extends JpaRepository<Avis, Long> {
     @Transactional
     @Modifying
-    @Query("delete from Avis a where a.id_produit=:#{#id_produit} AND a.client=:#{#id_client}")
-    void deleteAvisnew(@Param("id_produit") long id_produit, @Param("id_client") long id_client);
+    @Query("delete from Avis a where a.id_produit=:#{#id_produit} AND a.client.id=:#{#id_client}")
+    void deleteAvisByProduitAndClient(@Param("id_produit") long id_produit, @Param("id_client") long id_client);
+
+
     @Transactional
     @Modifying
     @Query("delete from Avis a where a.id_produit=:#{#id_produit}")

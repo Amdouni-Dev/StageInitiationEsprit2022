@@ -47,9 +47,9 @@ public class AvisService {
     avisRepository.deleteAvisByProduit(id_produit);
   }
 
-
- public void deleteAvisnew(long id_produit,long id_client) {
-   avisRepository.deleteAvisnew(id_produit,id_client);
+  // delete  review by idProduitANDidClient
+  public void deleteAvisByProduitAndClient(long id_produit,long id_client) {
+   avisRepository.deleteAvisByProduitAndClient(id_produit,id_client);
  }
 
 
