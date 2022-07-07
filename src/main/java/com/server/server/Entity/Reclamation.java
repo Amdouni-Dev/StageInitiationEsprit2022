@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -24,9 +26,14 @@ public class Reclamation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+
     private String msgBody;
     private String subject;
     private String attachment;
+
+    @JsonBackReference
+    @JsonIgnore
     @ManyToOne
     private Client client;
   }

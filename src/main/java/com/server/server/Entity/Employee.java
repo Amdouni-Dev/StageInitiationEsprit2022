@@ -1,23 +1,16 @@
 package com.server.server.Entity;
 
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
-
-import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.CascadeType;
-
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.server.server.Enums.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,28 +24,22 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Commande {
+public class Employee {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long id_commande;
+  private long id;
 
-  private String  etat;
-  private String  adresse;
-  private Date date_commande;
-
-
-  @JsonIgnore
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "commande")
-  private List<Produit> produits;
-
-
-  @ManyToOne
-  private Client client;
-
+  private String first_name;
+  private String last_name;
+  private String email;
+  private String password;
+  private Role role;
 
   @JsonIgnore
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "commande")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee")
+  private List<Promotion> promotions;
+
+  @JsonIgnore
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee")
   private List<Notification> notifications;
-
-
 }

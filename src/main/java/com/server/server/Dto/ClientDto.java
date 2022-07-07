@@ -8,11 +8,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.server.server.Entity.*;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.server.server.Entity.Avis;
-import com.server.server.Entity.Client;
-import com.server.server.Entity.Commande;
-import com.server.server.Entity.Panier;
+import com.server.server.Entity.Review;
+import com.server.server.Entity.Order;
+import com.server.server.Entity.ShoppingCart;
 
 
 import lombok.AllArgsConstructor;
@@ -30,16 +28,16 @@ import lombok.Setter;
 public class ClientDto implements Serializable{
   private long id;
 
-  private String nom;
-  private String prenom;
+  private String first_name;
+  private String last_name;
   private String email;
-  private String adresse;
+  private String address;
   private String telephone;
   private String password;
-  private transient List <Avis> avis;
-  private transient List<Commande> commande;
+  private transient List <Review> reviews;
+  private transient List<Order> orders;
 
-  private transient Panier panier;
+  private transient ShoppingCart shoppingCart;
 
   private transient List < Reclamation> reclamation;
 

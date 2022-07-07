@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.*;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -29,12 +31,14 @@ public class Promotion {
   private Date dateFin;
   private int pourcentageReduction;
 
-  @ManyToOne()
-  private Employe employe;
 
-  private long id_produit;
+  @JsonBackReference
+  @JsonIgnore
+  @ManyToOne()
+  private Employee employee;
+
 
   @OneToOne()
-  private Produit produit;
+  private Product product;
 
 }

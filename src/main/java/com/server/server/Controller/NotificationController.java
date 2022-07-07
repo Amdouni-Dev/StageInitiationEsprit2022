@@ -33,10 +33,10 @@ public class NotificationController {
     private ModelMapper modelMapper;
 
     // Sending a simple Email
-    @PostMapping("/sendMail/{id_commande}")
-    public ResponseEntity<Object> sendMail(@RequestBody NotificationDto notificationDto, @PathVariable("id_commande") long id_commande) {
+    @PostMapping("/sendMail/{id_order}")
+    public ResponseEntity<Object> sendMail(@RequestBody NotificationDto notificationDto, @PathVariable("id_order") long id_order) {
         Notification notifReq = modelMapper.map(notificationDto, Notification.class);
-        ResponseEntity<Notification> notification = notificationService.sendSimpleMail(notifReq, id_commande);
+        ResponseEntity<Notification> notification = notificationService.sendSimpleMail(notifReq, id_order);
         if (notification.getStatusCodeValue() == 200) {
             NotificationDto notifRes = modelMapper.map(notification.getBody(), NotificationDto.class);
             return new ResponseEntity<>(notifRes, HttpStatus.OK);
@@ -49,10 +49,10 @@ public class NotificationController {
 
 
     // Sending email with attachment
-    @PostMapping("/sendMailWithAttachment/{id_commande}")
-    public ResponseEntity<Object> sendMailWithAttachment(@RequestBody NotificationDto notificationDto, @PathVariable("id_commande") long id_commande) {
+    @PostMapping("/sendMailWithAttachment/{id_order}")
+    public ResponseEntity<Object> sendMailWithAttachment(@RequestBody NotificationDto notificationDto, @PathVariable("id_order") long id_order) {
         Notification notifReq = modelMapper.map(notificationDto, Notification.class);
-        ResponseEntity<Notification> notification = notificationService.sendMailWithAttachment(notifReq, id_commande);
+        ResponseEntity<Notification> notification = notificationService.sendMailWithAttachment(notifReq, id_order);
         if (notification.getStatusCodeValue() == 200) {
             NotificationDto notifRes = modelMapper.map(notification.getBody(), NotificationDto.class);
             return new ResponseEntity<>(notifRes, HttpStatus.OK);

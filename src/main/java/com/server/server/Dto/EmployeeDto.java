@@ -6,11 +6,11 @@ import com.server.server.Entity.Notification;
 import com.server.server.Entity.Promotion;
 import com.server.server.Enums.Role;
 
-public class EmployeDto {
+public class EmployeeDto {
   private long id;
 
-  private String nom;
-  private String prenom;
+  private String first_name;
+  private String last_name;
   private String email;
   private String password;
   private Role role;

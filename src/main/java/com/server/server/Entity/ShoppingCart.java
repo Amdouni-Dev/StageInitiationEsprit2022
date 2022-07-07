@@ -1,11 +1,8 @@
 package com.server.server.Entity;
 
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,17 +16,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Panier {
+public class ShoppingCart {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long id_panier;
+  private long id;
 
 
 
   @OneToOne()
   private Client client;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "panier")
-  private List<Produit> produits;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "shoppingCart")
+  private List<Product> products;
 
 }

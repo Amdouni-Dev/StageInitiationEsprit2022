@@ -1,12 +1,13 @@
 package com.server.server.Service;
 
+import com.server.server.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.server.server.Repository.EmployeRepository;
 
 @Service
-public class EmployeService {
+public class EmployeeService {
+
   @Autowired
-  EmployeRepository employeRepository;
+  EmployeeRepository employeeRepository;
 }

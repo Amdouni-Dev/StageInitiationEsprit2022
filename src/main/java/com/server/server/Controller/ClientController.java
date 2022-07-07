@@ -1,7 +1,6 @@
 package com.server.server.Controller;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Optional;
 
 import javax.mail.MessagingException;
 
@@ -97,7 +96,7 @@ public class ClientController {
 
 
   //get client by id
-  @GetMapping(value = "/client/{id}")
+  @GetMapping(value = "/getClient/{id}")
   public ResponseEntity<Object> getClient(@PathVariable("id") long id) {
     ResponseEntity<Client> client = clientService.getClient(id);
     if (client.getStatusCodeValue() == 200) {

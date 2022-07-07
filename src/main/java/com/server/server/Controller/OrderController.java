@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/oauth")
 @RestController
-public class CommandeController {
+public class OrderController {
 
 }

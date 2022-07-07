@@ -2,11 +2,16 @@ package com.server.server.Dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import com.server.server.Entity.Client;
+import com.server.server.Entity.Product;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
@@ -14,6 +19,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class PaiementDto {
-  private long id_paiement;
+public class ReviewDto {
+  private long id;
+  private String  feed_back;
+  private int rate;
+  private Date date_review;
+  private transient Client client;
+  private transient Product product;
+
 }

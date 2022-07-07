@@ -1,6 +1,5 @@
 package com.server.server.Dto;
 
-import java.util.Collection;
 import java.util.Date;
 
 import java.util.List;
@@ -12,7 +11,7 @@ import com.server.server.Entity.Client;
 
 import com.server.server.Entity.Notification;
 
-import com.server.server.Entity.Produit;
+import com.server.server.Entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -25,16 +24,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class CommandeDto {
-  private long id_commande;
-  private String  etat;
-  private String  adresse;
-  private Date date_commande;
+public class OrderDto {
+  private long id;
+  private String  status;
+  private String  address;
+  private Date date_order;
 
 
 
   private transient List<Notification> notifications;
   private transient Client client;
-  private transient List<Produit> produits;
+  private transient List<Product> products;
 
 }

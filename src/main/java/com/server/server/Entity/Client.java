@@ -25,10 +25,10 @@ import java.util.*;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String nom;
-    private String prenom;
+    private String first_name;
+    private String last_name;
     private String email;
-    private String adresse;
+    private String address;
     private String telephone;
     private String password;
 
@@ -37,15 +37,15 @@ import java.util.*;
 
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
-  private List<Avis> avis;
+  private List<Review> reviews;
 
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
-  private List<Commande> commandes;
+  private List<Order> orders;
 
   @JsonIgnore
   @OneToOne(cascade = CascadeType.MERGE,mappedBy = "client")
-  private Panier panier;
+  private ShoppingCart shoppingCart;
 
 
   @JsonIgnore

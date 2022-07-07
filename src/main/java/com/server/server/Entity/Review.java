@@ -2,6 +2,8 @@ package com.server.server.Entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -17,22 +19,26 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-public class Avis {
+public class Review {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long id_avis;
-  private String  comm;
-  private int note;
-  private Date date_creation;
+  private long id;
+  private String  feedback;
+  private int rate;
+  private Date date_review;
 
+
+
+
+  @JsonBackReference
+  @JsonIgnore
   @ManyToOne
-  @JoinColumn(name = "produit_id", referencedColumnName = "id")
-  private Produit produit;
+  private Product product;
 
 
-
+  @JsonBackReference
+  @JsonIgnore
   @ManyToOne
-  @JoinColumn(name = "client_id", referencedColumnName = "id")
   private Client client;
 
 

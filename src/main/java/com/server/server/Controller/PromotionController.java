@@ -40,14 +40,14 @@ public class PromotionController {
   }
 
   //get all promotions
-  @GetMapping("/promotions")
+  @GetMapping("/getPromotions")
   public List<PromotionDto> getPromotions() {
     return promotionService.getPromotions().stream().map(promotion -> modelMapper.map(promotion, PromotionDto.class))
-        .collect(Collectors.toList());
+            .collect(Collectors.toList());
   }
 
   //get promo by id
-  @GetMapping(value = "/promotion/{id}")
+  @GetMapping(value = "/getPromotion/{id}")
   public ResponseEntity<Object> getPromotion(@PathVariable("id") long id) {
     ResponseEntity<Promotion> promotion = promotionService.getPromotion(id);
     if (promotion.getStatusCodeValue() == 200) {
@@ -62,10 +62,10 @@ public class PromotionController {
   }
 
   //create promo to a specific produit
-  @PostMapping("/addPromotion/{id_produit}")
-  public ResponseEntity<Object> addPromotion(@RequestBody PromotionDto promotionDto,@PathVariable("id_produit") long id_produit) {
+  @PostMapping("/addPromotion")
+  public ResponseEntity<Object> addPromotion(@RequestBody PromotionDto promotionDto) {
     Promotion promoReq = modelMapper.map(promotionDto, Promotion.class);
-    ResponseEntity<Promotion> promotion = promotionService.addPromotion(promoReq,id_produit);
+    ResponseEntity<Promotion> promotion = promotionService.addPromotion(promoReq);
     if (promotion.getStatusCodeValue() == 200) {
       PromotionDto promotionRes = modelMapper.map(promotion.getBody(), PromotionDto.class);
       return new ResponseEntity<>(promotionRes, HttpStatus.OK);
@@ -75,6 +75,7 @@ public class PromotionController {
       return new ResponseEntity<>(FOUND, HttpStatus.FOUND);
     }
   }
+
 
   //update promo
   @PutMapping(value = "/updatePromotion/{id}")

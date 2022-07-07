@@ -1,14 +1,8 @@
 package com.server.server.Controller;
 
-import java.util.Arrays;
-import java.util.List;
-
-import com.server.server.Dto.ClientDto;
-import com.server.server.Dto.ProduitDto;
-import com.server.server.Entity.Client;
-import com.server.server.Entity.Produit;
-import com.server.server.Service.ClientService;
-import com.server.server.Service.ProduitService;
+import com.server.server.Dto.ProductDto;
+import com.server.server.Entity.Product;
+import com.server.server.Service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -21,13 +15,13 @@ import static com.server.server.Controller.PromotionController.NULL;
 
 @RequestMapping("/oauth")
 @RestController
-public class ProduitController {
+public class ProductController {
 
   @Autowired
   private RestTemplate restTemplate;
 
   @Autowired
-  ProduitService produitService;
+  ProductService productService;
 
   @Autowired
   private ModelMapper modelMapper;
@@ -62,9 +56,9 @@ public class ProduitController {
   //get product by id
   @GetMapping(value = "/product/{id}")
   public ResponseEntity<Object> getProduct(@PathVariable("id") long id) {
-    ResponseEntity<Produit> product = produitService.getProduct(id);
+    ResponseEntity<Product> product = productService.getProduct(id);
     if (product.getStatusCodeValue() == 200) {
-      ProduitDto productDto = modelMapper.map(product.getBody(),ProduitDto.class);
+      ProductDto productDto = modelMapper.map(product.getBody(), ProductDto.class);
       return new ResponseEntity<>(productDto, HttpStatus.OK);
     } else if (product.getStatusCodeValue() == 404) {
       return new ResponseEntity<>(NOT_FOUND, HttpStatus.OK);
@@ -76,9 +70,9 @@ public class ProduitController {
   }
 
 
-  @DeleteMapping(value = "/deleteProduitByIdAndPanier/{id_produit}/{id_panier}")
-  public  void deleteProduitByIdAndPanier(@PathVariable("id_produit") long id_produit, @PathVariable("id_panier") long id_panier) {
-    produitService.deleteProduitByIdAndPanier(id_produit,id_panier);
+  @DeleteMapping(value = "deleteProductByIdAndShoppingCart/{id_product}/{id_shoppingCart}")
+  public  void deleteProductByIdAndShoppingCart(@PathVariable("id_product") long id_product, @PathVariable("id_shoppingCart") long id_shoppingCart) {
+    productService.deleteProductByIdAndShoppingCart(id_product,id_shoppingCart);
 
 
   }

@@ -1,14 +1,13 @@
 package com.server.server.Entity;
 
-import java.sql.Timestamp;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.server.server.Dto.EmployeDto;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,9 +31,16 @@ public class Notification {
   private String subject;
   private String attachment;
 
+
+  @JsonBackReference
+  @JsonIgnore
   @ManyToOne
-  private Commande commande;
+  private Order order;
+
+
+  @JsonBackReference
+  @JsonIgnore
   @ManyToOne()
-  private Employe employe;
+  private Employee employee;
 
 }

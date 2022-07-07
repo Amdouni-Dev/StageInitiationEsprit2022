@@ -1,12 +1,10 @@
 package com.server.server.Dto;
 
-import java.sql.Timestamp;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import com.server.server.Entity.Commande;
+import com.server.server.Entity.Order;
 
-import com.server.server.Entity.Employe;
+import com.server.server.Entity.Employee;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +26,6 @@ public class NotificationDto {
   private String msgBody;
   private String subject;
   private String attachment;
-  private transient Commande commande;
-  private transient Employe employe;
+  private transient Order order;
+  private transient Employee employee;
 }

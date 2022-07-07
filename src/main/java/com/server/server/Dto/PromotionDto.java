@@ -4,11 +4,9 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.server.server.Entity.Client;
-import com.server.server.Entity.Employe;
+import com.server.server.Entity.Employee;
 
-import com.server.server.Entity.Produit;
-import com.server.server.Entity.Promotion;
+import com.server.server.Entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -26,10 +24,10 @@ public class PromotionDto {
 
   private String description;
   private Timestamp dateCreation;
-  private Date dateDebut;
-  private Date dateFin;
+  private Date date_start;
+  private Date date_end;
   private int pourcentageReduction;
-  private transient Employe employe;
-  private transient Produit produit  ;
+  private transient Employee employee;
+  private transient Product product;
 
 }
