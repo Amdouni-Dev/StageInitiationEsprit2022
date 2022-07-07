@@ -38,12 +38,18 @@ public class Commande {
 
   private String  etat;
   private String  adresse;
-
   private Date date_commande;
-  @ElementCollection
-  private Collection<Integer> id_produit;
+
+
+  @JsonIgnore
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "commande")
+  private List<Produit> produits;
+
+
   @ManyToOne
   private Client client;
+
+
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "commande")
   private List<Notification> notifications;

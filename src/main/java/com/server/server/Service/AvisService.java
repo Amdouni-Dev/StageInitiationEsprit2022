@@ -1,15 +1,14 @@
 package com.server.server.Service;
 
 import java.sql.Timestamp;
-
 import java.util.Optional;
 
+import com.server.server.Entity.Produit;
+import com.server.server.Repository.ProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import com.server.server.Controller.ClientController;
 import com.server.server.Entity.Avis;
 import com.server.server.Entity.Client;
 import com.server.server.Repository.AvisRepository;
@@ -23,17 +22,24 @@ public class AvisService {
   @Autowired
   ClientRepository clientRepository;
 
-  //insert Review
+  @Autowired
+  ProduitRepository produitRepository;
+
+
+
+
+  //insert Review ( for note and comment )
   public ResponseEntity<Avis> addReview(Avis avis, long id_produit, long id_client) {
     if (avis == null) {
       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     Optional<Client> client = clientRepository.findById(id_client);
+    Optional<Produit> produit = produitRepository.findById(id_produit);
 
-    // remplir les champs
+    // set columns
     avis.setDate_creation(new Timestamp(System.currentTimeMillis()));
-    avis.setId_produit(id_produit);
+    avis.setProduit(produit.get());
     avis.setClient(client.get());
     avisRepository.save(avis);
     return ResponseEntity.ok(avis);

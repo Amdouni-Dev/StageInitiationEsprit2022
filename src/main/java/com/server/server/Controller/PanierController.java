@@ -35,7 +35,7 @@ public class PanierController {
     //get panier by id_client
     @GetMapping(value = "/findByIdClient/{id_client}")
     public ResponseEntity<Object> getByIdClient(@PathVariable("id_client") long id_client) {
-        ResponseEntity<Panier> panier = panierService.findByIdClient(id_client);
+        ResponseEntity<Panier> panier = panierService.findByClientId(id_client);
         if (panier.getStatusCodeValue() == 200) {
 
             PanierDto panierDto = modelMapper.map(panier.getBody(), PanierDto.class);
@@ -49,9 +49,5 @@ public class PanierController {
     }
 
 
-    @DeleteMapping(value = "/deleteProduitPanierByProduitAndClient/{id_produit}/{id_client}")
-    public  void deleteProduitPanierByProduitAndClient(@PathVariable("id_produit") Collection<Integer> id_produit, @PathVariable("id_client") long id_client) {
-        panierService.deleteProduitPanierByProduitAndClient(id_produit,id_client);
 
-    }
 }

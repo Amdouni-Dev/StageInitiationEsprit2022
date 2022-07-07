@@ -36,11 +36,12 @@ public class ClientDto implements Serializable{
   private String adresse;
   private String telephone;
   private String password;
-  private transient Avis avis;
-  private transient Commande commande;
+  private transient List <Avis> avis;
+  private transient List<Commande> commande;
+
   private transient Panier panier;
 
-  private transient Reclamation reclamation;
+  private transient List < Reclamation> reclamation;
 
 }
 

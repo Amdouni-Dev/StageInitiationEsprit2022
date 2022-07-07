@@ -3,16 +3,20 @@ package com.server.server.Controller;
 import java.util.Arrays;
 import java.util.List;
 
+import com.server.server.Dto.ClientDto;
+import com.server.server.Dto.ProduitDto;
+import com.server.server.Entity.Client;
+import com.server.server.Entity.Produit;
+import com.server.server.Service.ClientService;
+import com.server.server.Service.ProduitService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+
+import static com.server.server.Controller.PromotionController.NOT_FOUND;
+import static com.server.server.Controller.PromotionController.NULL;
 
 
 @RequestMapping("/oauth")
@@ -22,7 +26,11 @@ public class ProduitController {
   @Autowired
   private RestTemplate restTemplate;
 
+  @Autowired
+  ProduitService produitService;
 
+  @Autowired
+  private ModelMapper modelMapper;
   HttpHeaders createHeaders(){
     return new HttpHeaders() {
       {
@@ -32,7 +40,7 @@ public class ProduitController {
     };
 
   }
-
+/*              ************************************************************************************
   //get product by id
   @RequestMapping(value = "/produit/{id}")
   public String getProductById(@PathVariable("id") long id) {
@@ -48,6 +56,32 @@ public class ProduitController {
 
   }
 
+        ****************************************************************************************          */
+
+
+  //get product by id
+  @GetMapping(value = "/product/{id}")
+  public ResponseEntity<Object> getProduct(@PathVariable("id") long id) {
+    ResponseEntity<Produit> product = produitService.getProduct(id);
+    if (product.getStatusCodeValue() == 200) {
+      ProduitDto productDto = modelMapper.map(product.getBody(),ProduitDto.class);
+      return new ResponseEntity<>(productDto, HttpStatus.OK);
+    } else if (product.getStatusCodeValue() == 404) {
+      return new ResponseEntity<>(NOT_FOUND, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(NULL, HttpStatus.OK);
+
+    }
+
+  }
+
+
+  @DeleteMapping(value = "/deleteProduitByIdAndPanier/{id_produit}/{id_panier}")
+  public  void deleteProduitByIdAndPanier(@PathVariable("id_produit") long id_produit, @PathVariable("id_panier") long id_panier) {
+    produitService.deleteProduitByIdAndPanier(id_produit,id_panier);
+
+
+  }
 
 }
 

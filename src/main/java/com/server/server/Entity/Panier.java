@@ -1,14 +1,9 @@
 package com.server.server.Entity;
 
 import java.util.Collection;
+import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,9 +24,12 @@ public class Panier {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id_panier;
 
-  @OneToOne
+
+
+  @OneToOne()
   private Client client;
 
-  @ElementCollection
-  private Collection<Integer> id_produit;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "panier")
+  private List<Produit> produits;
+
 }

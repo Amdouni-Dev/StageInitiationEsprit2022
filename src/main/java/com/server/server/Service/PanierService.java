@@ -19,10 +19,10 @@ public class PanierService {
     @Autowired
     PanierRepository panierRepository;
 
-    // get panier by id client
-    public ResponseEntity<Panier> findByIdClient(long id_client) {
+    // get cart by id client
+    public ResponseEntity<Panier> findByClientId(long id_client) {
 
-        Optional<Panier> optionalPanier = panierRepository.findByClientoooId(id_client);
+        Optional<Panier> optionalPanier = panierRepository.findByClientId(id_client);
         System.out.println("ooooooooooooooooooooooo");
         if (optionalPanier.isPresent()) {
             return ResponseEntity.ok(optionalPanier.get());
@@ -32,9 +32,5 @@ public class PanierService {
     }
 
 
-    // delete  produit of panier by idProduitANDidClient
-    public void deleteProduitPanierByProduitAndClient(Collection<Integer> id_produit, long id_client) {
-        panierRepository.deleteProduitPanierByProduitAndClient(id_produit,id_client);
-    }
 
 }

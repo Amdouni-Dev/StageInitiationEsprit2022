@@ -1,11 +1,5 @@
 package com.server.server.Entity;
 
-
-
-
-
-
-
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -30,9 +24,15 @@ public class Avis {
   private String  comm;
   private int note;
   private Date date_creation;
-  private long id_produit;
 
   @ManyToOne
+  @JoinColumn(name = "produit_id", referencedColumnName = "id")
+  private Produit produit;
+
+
+
+  @ManyToOne
+  @JoinColumn(name = "client_id", referencedColumnName = "id")
   private Client client;
 
 
