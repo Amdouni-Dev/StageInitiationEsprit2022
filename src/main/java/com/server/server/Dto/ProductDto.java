@@ -2,7 +2,7 @@ package com.server.server.Dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.server.server.Entity.Review;
-import com.server.server.Entity.Order;
+import com.server.server.Entity.Orders;
 import com.server.server.Entity.ShoppingCart;
 import com.server.server.Entity.Promotion;
 import lombok.AllArgsConstructor;
@@ -23,7 +23,7 @@ import java.util.List;
 public class ProductDto {
     private long id;
 
-    private int manufacturer;
+    /*private int manufacturer;
     private String  sku;
     private  int ean13;
     private  int weight;
@@ -51,13 +51,13 @@ public class ProductDto {
     //private Tags tags;
     private Date dateUpdProperties;
     private Date dateUpdCategories;
-    //private PriceLargeQuantities priceLargeQuantities;
+    //private PriceLargeQuantities priceLargeQuantities;*/
 
 
     private transient Promotion promotion;
     private transient List<Review> reviews;
     private transient ShoppingCart shoppingCart;
-    private transient Order order;
+    private transient Orders orders;
 
 
 }

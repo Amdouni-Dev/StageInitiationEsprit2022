@@ -41,7 +41,7 @@ import java.util.*;
 
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
-  private List<Order> orders;
+  private List<Orders> orders;
 
   @JsonIgnore
   @OneToOne(cascade = CascadeType.MERGE,mappedBy = "client")

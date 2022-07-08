@@ -23,11 +23,10 @@ import lombok.Setter;
 
 public class Product {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private int manufacturer;
+    /*private int manufacturer;
     private String  sku;
     private  int ean13;
     private  int weight;
@@ -55,7 +54,7 @@ public class Product {
     //private Tags tags;
     private Date dateUpdProperties;
     private Date dateUpdCategories;
-    //private PriceLargeQuantities priceLargeQuantities;
+    //private PriceLargeQuantities priceLargeQuantities;*/
 
     @JsonIgnore
     @OneToOne(cascade = CascadeType.MERGE,mappedBy = "product")
@@ -74,9 +73,7 @@ public class Product {
     @JsonBackReference
     @JsonIgnore
     @ManyToOne()
-    private Order order;
-
-
+    private Orders orders;
 
 
 }

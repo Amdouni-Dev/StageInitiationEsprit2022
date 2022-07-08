@@ -2,7 +2,7 @@ package com.server.server.Dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import com.server.server.Entity.Order;
+import com.server.server.Entity.Orders;
 
 import com.server.server.Entity.Employee;
 
@@ -26,6 +26,6 @@ public class NotificationDto {
   private String subject;
   private String attachment;
 
-  private transient Order order;
+  private transient Orders orders;
   private transient Employee employee;
 }

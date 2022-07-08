@@ -9,7 +9,7 @@ import com.server.server.Entity.*;
 
 
 import com.server.server.Entity.Review;
-import com.server.server.Entity.Order;
+import com.server.server.Entity.Orders;
 import com.server.server.Entity.ShoppingCart;
 
 
@@ -39,7 +39,7 @@ public class ClientDto implements Serializable{
 
 
   private transient List <Review> reviews;
-  private transient List <Order> orders;
+  private transient List <Orders> orders;
 
   private transient ShoppingCart shoppingCart;
 

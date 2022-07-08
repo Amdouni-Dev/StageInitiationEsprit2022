@@ -35,7 +35,7 @@ public class Notification {
   @JsonBackReference
   @JsonIgnore
   @ManyToOne
-  private Order order;
+  private Orders orders;
 
 
   @JsonBackReference

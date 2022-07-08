@@ -1,9 +1,9 @@
 package com.server.server.Service;
 
 
-import com.server.server.Entity.Order;
+import com.server.server.Entity.Orders;
 import com.server.server.Entity.Notification;
-import com.server.server.Repository.OrderRepository;
+import com.server.server.Repository.OrdersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +25,7 @@ public class NotificationService {
   NotificationRepository notificationRepository;
 
   @Autowired
-  OrderRepository orderRepository;
+  OrdersRepository ordersRepository;
   @Autowired private JavaMailSender javaMailSender;
 
   @Value("${spring.mail.username}") private String sender;
@@ -41,7 +41,7 @@ public class NotificationService {
 
       // Creating a simple mail message
       SimpleMailMessage mailMessage = new SimpleMailMessage();
-      Optional<Order> commande  = orderRepository.findById(id_commande);
+      Optional<Orders> commande  = ordersRepository.findById(id_commande);
       // Setting up necessary details
       mailMessage.setFrom(sender);
       mailMessage.setTo(commande.get().getClient().getEmail());
@@ -66,7 +66,7 @@ public class NotificationService {
   { if (notification == null) {
     return new ResponseEntity<>(HttpStatus.BAD_REQUEST);}
     // Creating a mime message
-    Optional<Order> commande  = orderRepository.findById(id_commande);
+    Optional<Orders> commande  = ordersRepository.findById(id_commande);
     MimeMessage mimeMessage = javaMailSender.createMimeMessage();
     MimeMessageHelper mimeMessageHelper;
 

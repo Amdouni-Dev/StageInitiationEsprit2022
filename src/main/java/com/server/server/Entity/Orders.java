@@ -30,7 +30,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Order {
+public class Orders {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
@@ -41,17 +41,16 @@ public class Order {
 
 
   @JsonIgnore
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")
   private List<Product> products;
 
-  @JsonBackReference
-  @JsonIgnore
+
   @ManyToOne
   private Client client;
 
 
   @JsonIgnore
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")
   private List<Notification> notifications;
 
 

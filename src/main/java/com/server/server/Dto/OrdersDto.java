@@ -24,7 +24,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class OrderDto {
+public class OrdersDto {
   private long id;
 
   private String  status;
