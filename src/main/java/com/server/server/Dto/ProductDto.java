@@ -22,6 +22,7 @@ import java.util.List;
 @Setter
 public class ProductDto {
     private long id;
+
     private int manufacturer;
     private String  sku;
     private  int ean13;
@@ -51,11 +52,11 @@ public class ProductDto {
     private Date dateUpdProperties;
     private Date dateUpdCategories;
     //private PriceLargeQuantities priceLargeQuantities;
-    //private PriceLargeQuantities priceLargeQuantities;
+
+
     private transient Promotion promotion;
     private transient List<Review> reviews;
     private transient ShoppingCart shoppingCart;
-
     private transient Order order;
 
 

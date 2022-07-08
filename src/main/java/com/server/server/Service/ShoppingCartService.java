@@ -19,7 +19,6 @@ public class ShoppingCartService {
     public ResponseEntity<ShoppingCart> findByClientId(long id_client) {
 
         Optional<ShoppingCart> optionalShoppingCart = shoppingCartRepository.findByClientId(id_client);
-        System.out.println("wwwwwwww");
         if (optionalShoppingCart.isPresent()) {
             return ResponseEntity.ok(optionalShoppingCart.get());
         } else {

@@ -24,9 +24,10 @@ public class PromotionDto {
 
   private String description;
   private Timestamp dateCreation;
-  private Date date_start;
-  private Date date_end;
+  private Date dateDebut;
+  private Date dateFin;
   private int pourcentageReduction;
+
   private transient Employee employee;
   private transient Product product;
 

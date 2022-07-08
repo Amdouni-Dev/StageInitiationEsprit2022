@@ -26,10 +26,10 @@ import lombok.Setter;
 @Setter
 public class OrderDto {
   private long id;
+
   private String  status;
   private String  address;
-  private Date date_order;
-
+  private Date dateOrder;
 
 
   private transient List<Notification> notifications;

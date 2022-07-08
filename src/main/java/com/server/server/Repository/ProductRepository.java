@@ -10,6 +10,6 @@ import com.server.server.Entity.Product;
 public interface ProductRepository extends JpaRepository<Product,Long> {
 
 
-    void deleteProductByIdAndShoppingCart(long id_product,long id_shoppingcart);
+    void deleteProductByIdAndShoppingCart(long id_product,long id_shoppingCart);
 
 }

@@ -115,6 +115,8 @@ public class ClientService {
   public ResponseEntity<Client> getClient(long id) {
 
     Optional<Client> optionalClient = clientRepository.findById(id);
+    System.out.println("wwwwwwww");
+
     if (optionalClient.isPresent()) {
       return ResponseEntity.ok(optionalClient.get());
     } else {

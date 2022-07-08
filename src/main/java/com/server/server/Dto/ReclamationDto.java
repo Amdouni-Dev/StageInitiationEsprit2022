@@ -24,6 +24,7 @@ public class ReclamationDto {
   private String msgBody;
   private String subject;
   private String attachment;
+
   private transient Client client;
 
 }

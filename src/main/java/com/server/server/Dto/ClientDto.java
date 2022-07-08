@@ -34,12 +34,16 @@ public class ClientDto implements Serializable{
   private String address;
   private String telephone;
   private String password;
+  private String verificationCode;
+  private boolean enabled;
+
+
   private transient List <Review> reviews;
-  private transient List<Order> orders;
+  private transient List <Order> orders;
 
   private transient ShoppingCart shoppingCart;
 
-  private transient List < Reclamation> reclamation;
+  private transient List <Reclamation> reclamation;
 
 }
 

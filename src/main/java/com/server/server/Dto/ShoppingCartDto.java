@@ -20,6 +20,7 @@ import java.util.List;
 @Setter
 public class ShoppingCartDto {
   private long id;
+
   private transient Client client;
   private transient List<Product> products;
 

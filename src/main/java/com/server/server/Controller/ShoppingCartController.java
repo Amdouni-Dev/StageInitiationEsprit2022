@@ -32,7 +32,7 @@ public class ShoppingCartController {
         ResponseEntity<ShoppingCart> shoppingCart = shoppingCartService.findByClientId(id_client);
         if (shoppingCart.getStatusCodeValue() == 200) {
 
-            ShoppingCartDto shoppingCartDto = modelMapper.map(shoppingCart.getBody(), ShoppingCartDto.class);
+            ShoppingCartDto shoppingCartDto =modelMapper.map(shoppingCart.getBody(), ShoppingCartDto.class);
             return new ResponseEntity<>(shoppingCartDto, HttpStatus.OK);
         } else if(shoppingCart.getStatusCodeValue() == 404){
             return new ResponseEntity<>(NOT_FOUND,HttpStatus.OK);

@@ -21,9 +21,11 @@ import java.util.Date;
 @Setter
 public class ReviewDto {
   private long id;
+
   private String  feed_back;
   private int rate;
   private Date date_review;
+
   private transient Client client;
   private transient Product product;
 

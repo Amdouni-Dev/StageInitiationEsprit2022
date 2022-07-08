@@ -23,6 +23,7 @@ public class Review {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
+
   private String  feedback;
   private int rate;
   private Date date_review;

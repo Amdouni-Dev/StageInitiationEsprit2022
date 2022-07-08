@@ -22,10 +22,10 @@ public class NotificationDto {
   private long id;
 
 
-
   private String msgBody;
   private String subject;
   private String attachment;
+
   private transient Order order;
   private transient Employee employee;
 }
