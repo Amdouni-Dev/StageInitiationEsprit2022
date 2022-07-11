@@ -2,6 +2,8 @@ package com.server.server.Repository;
 
 
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
@@ -28,6 +30,13 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
     @Modifying
     @Query("delete from Review r where r.product.id=:#{#id_product}")
     void deleteReviewByProduct(@Param("id_product") long id_product);
+
+    @Query("SELECT r FROM Review r WHERE r.client.id=:#{#id_client}")
+    public Optional<Review> getReviewByClientId(@Param("id_client") long id_client);
+    public Optional<Review> findByProduct_Id(long id_product);
+
+
+    public Optional<Review> findByProduct_IdAndAndClient_Id(long id_product,long id_client);
 
 
 }

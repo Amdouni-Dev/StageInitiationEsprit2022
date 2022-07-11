@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -19,7 +20,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ReviewDto {
+public class ReviewDto implements Serializable {
   private long id;
 
   private String  feed_back;

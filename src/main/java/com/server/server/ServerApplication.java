@@ -16,7 +16,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 @SpringBootApplication
 @EnableScheduling
-
 public class ServerApplication {
     @Bean
     public ModelMapper modelMapper() {

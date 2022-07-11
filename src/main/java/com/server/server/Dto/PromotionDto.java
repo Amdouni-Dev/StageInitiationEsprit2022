@@ -1,5 +1,6 @@
 package com.server.server.Dto;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -19,7 +20,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class PromotionDto {
+public class PromotionDto implements Serializable {
   private long id;
 
   private String description;

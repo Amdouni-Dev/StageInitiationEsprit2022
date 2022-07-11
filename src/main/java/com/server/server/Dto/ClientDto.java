@@ -43,7 +43,7 @@ public class ClientDto implements Serializable{
 
   private transient ShoppingCart shoppingCart;
 
-  private transient List <Reclamation> reclamation;
+  private transient List <Reclamation> reclamations;
 
 }
 

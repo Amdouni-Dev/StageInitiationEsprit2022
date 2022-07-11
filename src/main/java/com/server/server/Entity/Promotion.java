@@ -31,12 +31,8 @@ public class Promotion {
   private Date dateFin;
   private int pourcentageReduction;
 
-
-  @JsonBackReference
-  @JsonIgnore
   @ManyToOne()
   private Employee employee;
-
 
   @OneToOne()
   private Product product;

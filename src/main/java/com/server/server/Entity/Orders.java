@@ -39,15 +39,12 @@ public class Orders {
   private String  address;
   private Date dateOrder;
 
-
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")
   private List<Product> products;
 
-
   @ManyToOne
   private Client client;
-
 
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")

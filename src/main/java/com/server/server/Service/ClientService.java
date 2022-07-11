@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.server.server.Entity.Client;
+import com.server.server.Entity.Promotion;
 import com.server.server.Repository.ClientRepository;
 
 import net.bytebuddy.utility.RandomString;
@@ -113,16 +114,15 @@ public class ClientService {
 
   //get client by id
   public ResponseEntity<Client> getClient(long id) {
-
     Optional<Client> optionalClient = clientRepository.findById(id);
-    System.out.println("wwwwwwww");
-
     if (optionalClient.isPresent()) {
       return ResponseEntity.ok(optionalClient.get());
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }
+
+
 
 }
 

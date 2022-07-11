@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.server.server.Dto.ClientDto;
+import com.server.server.Dto.PromotionDto;
 import com.server.server.Entity.Client;
+import com.server.server.Entity.Promotion;
 import com.server.server.Payload.Response.JwtResponse;
 import com.server.server.Repository.ClientRepository;
 import com.server.server.Security.Jwt.JwtUtils;
@@ -94,7 +96,6 @@ public class ClientController {
     ), HttpStatus.OK);
   }
 
-
   //get client by id
   @GetMapping(value = "/getClient/{id}")
   public ResponseEntity<Object> getClient(@PathVariable("id") long id) {
@@ -108,6 +109,5 @@ public class ClientController {
       return new ResponseEntity<>(NULL, HttpStatus.OK);
 
     }
-
   }
 }

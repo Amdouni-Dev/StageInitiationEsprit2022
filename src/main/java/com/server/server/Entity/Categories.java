@@ -1,12 +1,14 @@
 package com.server.server.Entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -21,19 +23,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Notification {
+public class Categories {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  private String msgBody;
-  private String subject;
-  private String attachment;
+  private long position;
 
-  @ManyToOne
-  private Orders orders;
-
-  @ManyToOne()
-  private Employee employee;
+  @JsonIgnore
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "categories")
+  private List<Product> products;
 
 }

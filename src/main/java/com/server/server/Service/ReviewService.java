@@ -26,7 +26,29 @@ public class ReviewService {
   ProductRepository productRepository;
 
 
+  // get Review by id-client
+  public ResponseEntity<Review> findByClientId(long id_client) {
 
+    Optional<Review> optionalReview = reviewRepository.getReviewByClientId(id_client);
+
+    if (optionalReview.isPresent()) {
+      return ResponseEntity.ok(optionalReview.get());
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+
+  // get Review by id-product
+  public ResponseEntity<Review> findByProduct_Id(long id_product) {
+
+    Optional<Review> optionalReview = reviewRepository.findByProduct_Id(id_product);
+
+    if (optionalReview.isPresent()) {
+      return ResponseEntity.ok(optionalReview.get());
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
 
   //insert Review ( for note or comment )
   public ResponseEntity<Review> addReview(Review review, long id_product, long id_client) {

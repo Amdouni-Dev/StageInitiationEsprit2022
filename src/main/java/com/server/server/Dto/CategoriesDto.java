@@ -1,18 +1,12 @@
 package com.server.server.Dto;
 
 import java.io.Serializable;
-import java.util.Date;
-
 import java.util.List;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.server.server.Entity.Client;
-
-
-import com.server.server.Entity.Notification;
-
 import com.server.server.Entity.Product;
+import com.server.server.Entity.Reclamation;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -25,16 +19,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class OrdersDto implements Serializable {
-  private long id;
-
-  private String  status;
-  private String  address;
-  private Date dateOrder;
-
-
-  private transient List<Notification> notifications;
-  private transient Client client;
+public class CategoriesDto implements Serializable {
+  private  long id;
+  private long position;
   private transient List<Product> products;
-
 }

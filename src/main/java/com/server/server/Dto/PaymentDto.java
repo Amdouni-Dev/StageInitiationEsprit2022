@@ -1,5 +1,7 @@
 package com.server.server.Dto;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -14,6 +16,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class PaymentDto {
+public class PaymentDto implements Serializable {
   private long id;
 }

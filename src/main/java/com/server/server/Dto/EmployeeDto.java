@@ -1,12 +1,13 @@
 package com.server.server.Dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.server.server.Entity.Notification;
 import com.server.server.Entity.Promotion;
 import com.server.server.Enums.Role;
 
-public class EmployeeDto {
+public class EmployeeDto implements Serializable {
   private long id;
 
   private String first_name;

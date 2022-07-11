@@ -27,13 +27,10 @@ public class Reclamation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
     private String msgBody;
     private String subject;
     private String attachment;
 
-    @JsonBackReference
-    @JsonIgnore
     @ManyToOne
     private Client client;
   }

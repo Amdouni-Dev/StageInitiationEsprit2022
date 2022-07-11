@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +30,40 @@ public class ReviewController {
   private ReviewService reviewService;
   @Autowired
   private ModelMapper modelMapper;
+
+  // get Review by id-client
+  @GetMapping(value = "/findByClient_Id/{id_client}")
+  public ResponseEntity<Object> findByClient_Id(@PathVariable("id_client") long id_client) {
+
+    System.out.println("in controller seraching for client"+id_client);
+    ResponseEntity<Review> review = reviewService.findByClientId(id_client);
+    if (review.getStatusCodeValue() == 200) {
+      ReviewDto reviewDto = modelMapper.map(review.getBody(),ReviewDto.class);
+      return new ResponseEntity<>(reviewDto, HttpStatus.OK);
+    } else if (review.getStatusCodeValue() == 404) {
+      return new ResponseEntity<>(NOT_FOUND, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(NULL, HttpStatus.OK);
+
+    }
+
+  }
+
+  // get Review by id-product
+  @GetMapping(value = "/findByProduct_Id/{id_product}")
+  public ResponseEntity<Object> findByProduct_Id(@PathVariable("id_product") long id_product) {
+    ResponseEntity<Review> review = reviewService.findByProduct_Id(id_product);
+    if (review.getStatusCodeValue() == 200) {
+      ReviewDto reviewDto = modelMapper.map(review.getBody(),ReviewDto.class);
+      return new ResponseEntity<>(reviewDto,HttpStatus.OK);
+    } else if (review.getStatusCodeValue() == 404) {
+      return new ResponseEntity<>(NOT_FOUND, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(NULL, HttpStatus.OK);
+
+    }
+
+  }
 
   // insert Review ( for note or  comment)
   @PostMapping("/addReview/{id_product}/{id_client}")

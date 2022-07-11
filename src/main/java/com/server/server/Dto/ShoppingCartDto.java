@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -18,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ShoppingCartDto {
+public class ShoppingCartDto implements Serializable {
   private long id;
 
   private transient Client client;

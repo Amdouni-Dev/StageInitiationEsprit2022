@@ -1,6 +1,7 @@
 package com.server.server.Dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.server.server.Entity.Categories;
 import com.server.server.Entity.Review;
 import com.server.server.Entity.Orders;
 import com.server.server.Entity.ShoppingCart;
@@ -11,6 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -20,8 +22,18 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ProductDto {
+public class ProductDto implements Serializable {
     private long id;
+    private String sku;
+    private  float weight;
+    private  float height;
+    private  float width;
+    private  float depth;
+    private Date dateUpd;
+    private Date dateUpdDescription;
+    private Date dateUpdImages;
+    private Date dateUpdStock;
+    private boolean active;
 
     /*private int manufacturer;
     private String  sku;
@@ -53,11 +65,10 @@ public class ProductDto {
     private Date dateUpdCategories;
     //private PriceLargeQuantities priceLargeQuantities;*/
 
-
     private transient Promotion promotion;
     private transient List<Review> reviews;
     private transient ShoppingCart shoppingCart;
     private transient Orders orders;
-
+    private transient Categories categories;
 
 }

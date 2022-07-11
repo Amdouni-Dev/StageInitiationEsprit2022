@@ -24,7 +24,7 @@ import com.server.server.Security.Service.ClientDetailsService;
     // securedEnabled = true,
     // jsr250Enabled = true,
     prePostEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 
   @Autowired
   ClientDetailsService clientDetailsService;

@@ -25,19 +25,20 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    /*private int manufacturer;
-    private String  sku;
-    private  int ean13;
-    private  int weight;
-    private  int height;
-    private  int width;
-    private  int depth;
+    private String sku;
+    private  float weight;
+    private  float height;
+    private  float width;
+    private  float depth;
     private Date dateUpd;
-    private long category;
     private Date dateUpdDescription;
     private Date dateUpdImages;
     private Date dateUpdStock;
+    private boolean active;
+    /*
+    private  int ean13;
+
+
     private float wholesalePrice;
     private float retailPrice;
     private Date dateAdd;
@@ -60,21 +61,18 @@ public class Product {
     @OneToOne(cascade = CascadeType.MERGE,mappedBy = "product")
     private Promotion promotion;
 
-
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     private List<Review> reviews;
 
-    @JsonBackReference
-    @JsonIgnore
     @ManyToOne()
     private ShoppingCart shoppingCart;
 
-    @JsonBackReference
-    @JsonIgnore
     @ManyToOne()
     private Orders orders;
 
+    @ManyToOne()
+    private Categories categories;
 
 }
 

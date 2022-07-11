@@ -26,10 +26,7 @@ public class ClientDetails implements UserDetails {
     this.email = email;
     this.password = password;
   }
-  @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    return authorities;
-  }
+
   public static ClientDetails build(Client client) {
     return new ClientDetails(
         client.getId(),
@@ -37,6 +34,12 @@ public class ClientDetails implements UserDetails {
         client.getPassword()
     );
   }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return authorities;
+  }
+
 
   public Long getId() {
     return id;

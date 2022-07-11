@@ -1,5 +1,7 @@
 package com.server.server.Dto;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -18,7 +20,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ReclamationDto {
+public class ReclamationDto implements Serializable {
   private long id;
 
   private String msgBody;
