@@ -25,7 +25,7 @@ import lombok.Setter;
 @Entity
 public class Categories {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+
   private long id;
 
   private long position;

@@ -32,7 +32,7 @@ import lombok.Setter;
 @Entity
 public class Orders {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+
   private long id;
 
   private String  status;

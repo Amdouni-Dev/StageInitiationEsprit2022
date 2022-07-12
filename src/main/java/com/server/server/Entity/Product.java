@@ -23,7 +23,7 @@ import lombok.Setter;
 
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private long id;
     private String sku;
     private  float weight;
@@ -35,6 +35,7 @@ public class Product {
     private Date dateUpdImages;
     private Date dateUpdStock;
     private boolean active;
+
     /*
     private  int ean13;
 
