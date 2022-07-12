@@ -35,6 +35,7 @@ public class Product {
     private Date dateUpdImages;
     private Date dateUpdStock;
     private boolean active;
+    private float wholesalePrice;
     /*
     private  int ean13;
 

@@ -34,6 +34,7 @@ public class ProductDto implements Serializable {
     private Date dateUpdImages;
     private Date dateUpdStock;
     private boolean active;
+    private float wholesalePrice;
 
     /*private int manufacturer;
     private String  sku;

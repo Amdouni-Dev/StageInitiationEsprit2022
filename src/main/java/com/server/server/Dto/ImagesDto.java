@@ -16,6 +16,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ImageDto implements Serializable {
-
+public class ImagesDto implements Serializable {
+  private  long id;
 }
