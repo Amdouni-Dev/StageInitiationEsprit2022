@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import javax.persistence.Column;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.server.server.Entity.Employee;
 
@@ -22,7 +24,6 @@ import lombok.Setter;
 @Setter
 public class PromotionDto implements Serializable {
   private long id;
-
   private String description;
   private Timestamp dateCreation;
   private Date dateDebut;

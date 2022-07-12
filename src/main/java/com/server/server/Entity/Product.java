@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -23,19 +22,22 @@ import lombok.Setter;
 
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String sku;
     private  float weight;
     private  float height;
     private  float width;
     private  float depth;
     private Date dateUpd;
+    private String categories;
     private Date dateUpdDescription;
     private Date dateUpdImages;
     private Date dateUpdStock;
     private boolean active;
     private float wholesalePrice;
+    private float retailPrice;
+    private float inShopsPrice;
     /*
     private  int ean13;
 
@@ -73,7 +75,19 @@ public class Product {
     private Orders orders;
 
     @ManyToOne()
-    private Categories categories;
+    private Category category;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private List<Images> images;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private List<Tags> tags;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private List<Attributes> attributes;
 
 }
 

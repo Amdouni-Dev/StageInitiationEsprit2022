@@ -3,20 +3,15 @@ package com.server.server.Entity;
 import java.util.Date;
 import java.util.List;
 
-
-import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.CascadeType;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,24 +25,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Orders {
+public class Category {
   @Id
   private long id;
-
-  private String  status;
-  private String  address;
-  private Date dateOrder;
+  private String name;
+  private String url;
+  private Date dateAdd;
+  private Date dateUpd;
 
   @JsonIgnore
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
   private List<Product> products;
-
-  @ManyToOne
-  private Client client;
-
-  @JsonIgnore
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")
-  private List<Notification> notifications;
-
 
 }

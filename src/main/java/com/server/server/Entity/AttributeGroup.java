@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -23,15 +21,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Categories {
+public class AttributeGroup {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
-
-  private long position;
+  private  String name;
+  private  String isoCode;
 
   @JsonIgnore
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "categories")
-  private List<Product> products;
-
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "attributeGroup")
+  private List<Attributes> attributes;
 }

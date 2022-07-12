@@ -27,7 +27,6 @@ import lombok.Setter;
 @Setter
 public class OrdersDto implements Serializable {
   private long id;
-
   private String  status;
   private String  address;
   private Date dateOrder;

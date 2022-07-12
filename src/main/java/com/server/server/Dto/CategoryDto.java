@@ -1,6 +1,7 @@
 package com.server.server.Dto;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -19,8 +20,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class CategoriesDto implements Serializable {
+public class CategoryDto implements Serializable {
   private  long id;
-  private long position;
+  private String name;
+  private String url;
+  private Date dateAdd;
+  private Date dateUpd;
   private transient List<Product> products;
 }
