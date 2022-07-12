@@ -27,6 +27,7 @@ import java.util.List;
 @Getter
 @Setter
 public class ProductDto implements Serializable {
+
     private long id;
     private String sku;
     private  float weight;

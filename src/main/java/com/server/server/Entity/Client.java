@@ -25,8 +25,8 @@ import java.util.*;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
+    private long id;
     private String first_name;
     private String last_name;
     private String email;
