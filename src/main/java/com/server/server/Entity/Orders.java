@@ -37,17 +37,24 @@ public class Orders {
   private String  status;
   private String  address;
   private Date dateOrder;
+  private String paymentMethod;
+
+
 
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")
   private List<Product> products;
 
   @ManyToOne
-  private Client client;
+  private Client shippingAddress;
 
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")
   private List<Notification> notifications;
+
+  @JsonIgnore
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")
+  private List<Carriers> carriers;
 
 
 }

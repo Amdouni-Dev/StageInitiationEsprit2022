@@ -27,13 +27,16 @@ import java.util.*;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+
     private String first_name;
     private String last_name;
     private String email;
     private String address;
-    private String telephone;
+    private String town;
+    private String phone;
     private String password;
-
+    private String country;
+    private String postcode;
     private String verificationCode;
     private boolean enabled;
 

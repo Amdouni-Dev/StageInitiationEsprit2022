@@ -1,7 +1,9 @@
 package com.server.server.Controller;
 
 import com.server.server.Dto.ProductDto;
+import com.server.server.Dto.PromotionDto;
 import com.server.server.Entity.Product;
+import com.server.server.Entity.Promotion;
 import com.server.server.Service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,7 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import static com.server.server.Controller.PromotionController.NOT_FOUND;
-import static com.server.server.Controller.PromotionController.NULL;
+import static com.server.server.Controller.PromotionController.*;
 
 
 @RequestMapping("/oauth")
@@ -75,6 +76,23 @@ public class ProductController {
     productService.deleteProductByIdAndShoppingCart(id_product,id_shoppingCart);
 
 
+  }
+
+
+  // insert product
+
+  @PostMapping("/addProduct")
+  public ResponseEntity<Object> addProduct(@RequestBody ProductDto productDto) {
+    Product productReq = modelMapper.map(productDto, Product.class);
+    ResponseEntity<Product> product = productService.addProduct(productReq);
+    if (product.getStatusCodeValue() == 200) {
+      ProductDto productRes = modelMapper.map(product.getBody(),ProductDto.class);
+      return new ResponseEntity<>(productRes, HttpStatus.OK);
+    } else if (product.getStatusCodeValue() == 400) {
+      return new ResponseEntity<>(BAD_REQUEST, HttpStatus.BAD_REQUEST);
+    } else {
+      return new ResponseEntity<>(FOUND, HttpStatus.FOUND);
+    }
   }
 
 }
