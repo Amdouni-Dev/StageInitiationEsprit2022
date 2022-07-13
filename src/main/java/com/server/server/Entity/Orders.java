@@ -46,7 +46,7 @@ public class Orders {
   private List<Product> products;
 
   @ManyToOne
-  private Client shippingAddress;
+  private Client client;
 
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")

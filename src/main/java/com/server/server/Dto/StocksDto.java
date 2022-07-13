@@ -1,8 +1,6 @@
 package com.server.server.Dto;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.server.server.Entity.Carriers;
 import lombok.*;
 
 import java.io.Serializable;
@@ -13,10 +11,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ShippingCountriesDto  implements Serializable {
-
+public class StocksDto implements Serializable {
     private long id;
-    private String isoCountry;
-    private transient Carriers carriers;
-
+    private long quantity;
+    private long minHandlingDays;
+    private long maxHandlingDays;
 }

@@ -16,19 +16,11 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-
-
-
 public class CarriersDto implements Serializable {
-
-
     private long id;
     private String name;
-    private List<ShippingServices> shippingServices;
-    private List<ShippingCountries> shippingCountries;
-
-
-
-    private Orders orders;
+    private transient List<ShippingServices> shippingServices;
+    private transient List<ShippingCountries> shippingCountries;
+    private transient Orders orders;
 }
 

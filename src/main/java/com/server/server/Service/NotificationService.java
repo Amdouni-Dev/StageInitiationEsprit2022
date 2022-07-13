@@ -44,7 +44,7 @@ public class NotificationService {
       Optional<Orders> commande  = ordersRepository.findById(id_commande);
       // Setting up necessary details
       mailMessage.setFrom(sender);
-      mailMessage.setTo(commande.get().getShippingAddress().getEmail());
+      mailMessage.setTo(commande.get().getClient().getEmail());
       mailMessage.setText(notification.getMsgBody());
       mailMessage.setSubject(notification.getSubject());
 
@@ -76,7 +76,7 @@ public class NotificationService {
       // be send
       mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
       mimeMessageHelper.setFrom(sender);
-      mimeMessageHelper.setTo(commande.get().getShippingAddress().getEmail());
+      mimeMessageHelper.setTo(commande.get().getClient().getEmail());
       mimeMessageHelper.setText(notification.getMsgBody());
       mimeMessageHelper.setSubject(notification.getSubject());
 

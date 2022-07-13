@@ -14,9 +14,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class ShippingServicesDto implements Serializable {
-
-
-
     private  long id;
     private String delay;
     private String name;

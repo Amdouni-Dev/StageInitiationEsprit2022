@@ -27,8 +27,6 @@ public class Carriers {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "carriers")
     private List<ShippingCountries> shippingCountries;
 
-
-
     @ManyToOne
     private Orders orders;
 }

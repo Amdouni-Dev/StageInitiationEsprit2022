@@ -36,7 +36,7 @@ public class OrdersDto implements Serializable {
 
 
   private transient List<Notification> notifications;
-  private transient Client shippingAddress;
+  private transient Client client;
   private transient List<Product> products;
   private transient List<Carriers> carriers;
 
