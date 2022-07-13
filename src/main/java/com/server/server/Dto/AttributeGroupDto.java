@@ -1,12 +1,11 @@
 package com.server.server.Dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import com.server.server.Entity.Attributes;
 import com.server.server.Entity.Orders;
-
-import com.server.server.Entity.Employee;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,13 +19,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class NotificationDto implements Serializable {
+public class AttributeGroupDto implements Serializable {
   private long id;
-
-  private String msgBody;
-  private String subject;
-  private String attachment;
-
-  private transient Orders orders;
-  private transient Employee employee;
+  private  String name;
+  private  String isoCode;
+  private transient List<Attributes> attributes;
 }

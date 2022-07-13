@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import java.util.List;
 
+import javax.persistence.Column;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.server.server.Entity.*;
 
@@ -27,7 +29,6 @@ import lombok.Setter;
 @Setter
 public class ClientDto implements Serializable{
   private long id;
-
   private String first_name;
   private String last_name;
   private String email;
