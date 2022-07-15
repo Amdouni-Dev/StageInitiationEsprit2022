@@ -29,7 +29,7 @@ public class ReviewService {
   // get Review by id-client
   public ResponseEntity<Review> findByClientId(long id_client) {
 
-    Optional<Review> optionalReview = reviewRepository.getReviewByClientId(id_client);
+    Optional<Review> optionalReview = reviewRepository. findByClient_Id(id_client);
 
     if (optionalReview.isPresent()) {
       return ResponseEntity.ok(optionalReview.get());
@@ -42,6 +42,19 @@ public class ReviewService {
   public ResponseEntity<Review> findByProduct_Id(long id_product) {
 
     Optional<Review> optionalReview = reviewRepository.findByProduct_Id(id_product);
+
+    if (optionalReview.isPresent()) {
+      return ResponseEntity.ok(optionalReview.get());
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+
+  // get Review by id-product and id_client
+
+  public ResponseEntity<Review> findByProduct_IdAndAndClient_Id(long id_product,long id_client) {
+
+    Optional<Review> optionalReview = reviewRepository.findByProduct_IdAndAndClient_Id(id_product,id_client);
 
     if (optionalReview.isPresent()) {
       return ResponseEntity.ok(optionalReview.get());

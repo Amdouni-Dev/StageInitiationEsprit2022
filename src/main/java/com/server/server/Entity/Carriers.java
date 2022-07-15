@@ -15,7 +15,7 @@ import java.util.List;
 public class Carriers {
 
     @Id
-    private long id; // mal9itch id mnin
+    private long id;
     private String name;
 
 

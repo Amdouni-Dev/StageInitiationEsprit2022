@@ -65,6 +65,21 @@ public class ReviewController {
 
   }
 
+  // get Review by id-product and id_client
+  @GetMapping(value = "/ findByProduct_IdAndAndClient_Id/{id_product}/{id_client}")
+  public ResponseEntity<Object>  findByProduct_IdAndAndClient_Id(@PathVariable("id_product") long id_product,@PathVariable("id_client") long id_client) {
+    ResponseEntity<Review> review = reviewService. findByProduct_IdAndAndClient_Id(id_product,id_client);
+    if (review.getStatusCodeValue() == 200) {
+      ReviewDto reviewDto = modelMapper.map(review.getBody(),ReviewDto.class);
+      return new ResponseEntity<>(reviewDto,HttpStatus.OK);
+    } else if (review.getStatusCodeValue() == 404) {
+      return new ResponseEntity<>(NOT_FOUND, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(NULL, HttpStatus.OK);
+
+    }
+
+  }
   // insert Review ( for note or  comment)
   @PostMapping("/addReview/{id_product}/{id_client}")
   public ResponseEntity<Object> addReview(@RequestBody ReviewDto reviewDto, @PathVariable("id_product") long id_product, @PathVariable("id_client") long id_client) {
