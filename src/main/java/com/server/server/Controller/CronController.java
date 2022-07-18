@@ -4,9 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.server.server.Entity.Carriers;
 import com.server.server.Service.CarriersService;
-import com.server.server.Service.ClientService;
-import com.server.server.Service.ProductService;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -57,9 +54,7 @@ public class CronController {
         return args -> {
             // read json and write to db
             ObjectMapper mapper = new ObjectMapper();
-            //String path = getCarriers();
-          //  System.out.println("ooooooooooooooooo"+path);
-           TypeReference<List<Carriers>> typeReference = new TypeReference<List<Carriers>>(){};
+            TypeReference<List<Carriers>> typeReference = new TypeReference<List<Carriers>>(){};
             InputStream inputStream = TypeReference.class.getResourceAsStream("/json/test.json");
             try {
                 List<Carriers> carriers = mapper.readValue(inputStream,typeReference);
