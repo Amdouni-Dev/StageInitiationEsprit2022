@@ -25,10 +25,12 @@ public class ServerApplication {
         return new ModelMapper();
     }
     public static void main(String[] args) {
+
         SpringApplication.run(ServerApplication.class, args);
 
-
+        System.out.println("Mail Sent Successfully...");
     }
+
     /*
     @Bean
     CommandLineRunner runner(CarriersService carriersService) {
