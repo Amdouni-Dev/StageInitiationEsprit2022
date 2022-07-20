@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.server.server.Entity.Client;
+import com.server.server.Entity.Employee;
 import com.server.server.Entity.Promotion;
 import com.server.server.Repository.ClientRepository;
 
@@ -116,6 +117,22 @@ public class ClientService {
   public ResponseEntity<Client> getClient(long id) {
     Optional<Client> optionalClient = clientRepository.findById(id);
     if (optionalClient.isPresent()) {
+      return ResponseEntity.ok(optionalClient.get());
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+
+  //update client profile
+  public ResponseEntity<Client> editProfileClient(long id, Client client) {
+    if (client == null) {
+      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+    Optional<Client> optionalClient = clientRepository.findById(id);
+    if (optionalClient.isPresent()) {
+      client.setId(id);
+      client.setPassword(optionalClient.get().getPassword());// à ameliorer
+      clientRepository.save(client);
       return ResponseEntity.ok(optionalClient.get());
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);

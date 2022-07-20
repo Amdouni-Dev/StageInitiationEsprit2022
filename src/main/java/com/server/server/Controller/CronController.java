@@ -49,7 +49,7 @@ public class CronController {
         return path;
     }
 
-    @Bean
+    /*@Bean
     CommandLineRunner runner(CarriersService carriersService) {
         return args -> {
             // read json and write to db
@@ -65,6 +65,6 @@ public class CronController {
             }
         };
 
-    }
+    }*/
 
 }
