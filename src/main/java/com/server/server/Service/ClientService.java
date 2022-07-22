@@ -78,7 +78,7 @@ public class ClientService {
     helper.setTo(toAddress);
     helper.setSubject(subject);
 
-    String verifyURL = "http://localhost:portfront/verify?code=" + client.getVerificationCode();
+    String verifyURL = "http://localhost:4200/verify?code=" + client.getVerificationCode();
 
     content = content.replace("[[URL]]", verifyURL);
 
@@ -131,7 +131,8 @@ public class ClientService {
     Optional<Client> optionalClient = clientRepository.findById(id);
     if (optionalClient.isPresent()) {
       client.setId(id);
-      client.setPassword(optionalClient.get().getPassword());// à ameliorer
+      String encodedPassword = passwordEncoder.encode(client.getPassword());
+      client.setPassword(encodedPassword);
       clientRepository.save(client);
       return ResponseEntity.ok(optionalClient.get());
     } else {
