@@ -29,6 +29,12 @@ import java.util.List;
 public class ProductDto implements Serializable {
 
     private long id;
+
+
+    private String name;
+    private String description;
+    private Date dateUpdDescription;
+
     private String sku;
     private  float weight;
     private  float height;
@@ -36,7 +42,6 @@ public class ProductDto implements Serializable {
     private  float depth;
     private Date dateUpd;
     private String categories;
-    private Date dateUpdDescription;
     private Date dateUpdImages;
     private Date dateUpdStock;
     private boolean active;

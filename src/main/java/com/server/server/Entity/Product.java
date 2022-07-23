@@ -7,11 +7,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
@@ -24,14 +20,18 @@ public class Product {
     @Id
     private long id;
 
+    private String name;
+    private String description;
+    private Date dateUpdDescription;
+
     private String sku;
     private  float weight;
     private  float height;
+
     private  float width;
     private  float depth;
     private Date dateUpd;
     private String categories;
-    private Date dateUpdDescription;
     private Date dateUpdImages;
     private Date dateUpdStock;
     private boolean active;
