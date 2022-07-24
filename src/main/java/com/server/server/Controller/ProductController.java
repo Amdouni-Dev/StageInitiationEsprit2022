@@ -13,6 +13,9 @@ import org.springframework.web.client.RestTemplate;
 
 import static com.server.server.Controller.PromotionController.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @RequestMapping("/oauth")
 @RestController
@@ -36,27 +39,16 @@ public class ProductController {
     };
 
   }
-/*              ************************************************************************************
-  //get product by id
-  @RequestMapping(value = "/produit/{id}")
-  public String getProductById(@PathVariable("id") long id) {
-    return restTemplate.exchange("https://api.bigbuy.eu/rest/catalog/product/"+id +".json", HttpMethod.GET,new HttpEntity<String>(createHeaders()), String.class).getBody();
+
+  //get all promotions
+  @GetMapping("/getProducts")
+  public List<ProductDto> getPromotions() {
+    return productService.getProducts().stream().map(product -> modelMapper.map(product, ProductDto.class))
+        .collect(Collectors.toList());
   }
 
-  //get all products (specify page size and page)
-  @GetMapping("/produits")
-  public List<Object> getProducts(@RequestParam("isoCode") String isoCode, @RequestParam("pageSize") long pageSize, @RequestParam("page") long page) {
-    String url ="https://api.bigbuy.eu/rest/catalog/productsinformation.json?isoCode="+isoCode+"&pageSize="+pageSize+"&page="+page;
-    Object[] produits = restTemplate.exchange(url,HttpMethod.GET,new HttpEntity<String>(createHeaders()), Object[].class).getBody();
-    return  Arrays.asList(produits);
-
-  }
-
-        ****************************************************************************************          */
-
-
   //get product by id
-  @GetMapping(value = "/product/{id}")
+  @GetMapping(value = "/getProduct/{id}")
   public ResponseEntity<Object> getProduct(@PathVariable("id") long id) {
     ResponseEntity<Product> product = productService.getProduct(id);
     if (product.getStatusCodeValue() == 200) {
@@ -71,6 +63,23 @@ public class ProductController {
 
   }
 
+  //update product
+  @PutMapping(value = "/updateProduct/{id}")
+  public ResponseEntity<Object> updateProduct(@PathVariable("id") long id, @RequestBody ProductDto productDto) {
+    Product prodReq = modelMapper.map(productDto, Product.class);
+    ResponseEntity<Product> product = productService.updateProduct(id,prodReq);
+
+    if (product.getStatusCodeValue() == 200) {
+      ProductDto prodRes = modelMapper.map(product.getBody(), ProductDto.class);
+      return new ResponseEntity<>(prodRes, HttpStatus.OK);
+    } else if (product.getStatusCodeValue() == 400) {
+      return new ResponseEntity<>(BAD_REQUEST, HttpStatus.BAD_REQUEST);
+    } else if(product.getStatusCodeValue() == 404){
+      return new ResponseEntity<>(NOT_FOUND,HttpStatus.OK);
+    }else{
+      return new ResponseEntity<>(NULL,HttpStatus.OK);
+    }
+  }
 
   @DeleteMapping(value = "deleteProductByIdAndShoppingCart/{id_product}/{id_shoppingCart}")
   public  void deleteProductByIdAndShoppingCart(@PathVariable("id_product") long id_product, @PathVariable("id_shoppingCart") long id_shoppingCart) {
@@ -79,22 +88,6 @@ public class ProductController {
 
   }
 
-
-  // insert product
-
-  @PostMapping("/addProduct")
-  public ResponseEntity<Object> addProduct(@RequestBody ProductDto productDto) {
-    Product productReq = modelMapper.map(productDto, Product.class);
-    ResponseEntity<Product> product = productService.addProduct(productReq);
-    if (product.getStatusCodeValue() == 200) {
-      ProductDto productRes = modelMapper.map(product.getBody(),ProductDto.class);
-      return new ResponseEntity<>(productRes, HttpStatus.OK);
-    } else if (product.getStatusCodeValue() == 400) {
-      return new ResponseEntity<>(BAD_REQUEST, HttpStatus.BAD_REQUEST);
-    } else {
-      return new ResponseEntity<>(FOUND, HttpStatus.FOUND);
-    }
-  }
 
 }
 
