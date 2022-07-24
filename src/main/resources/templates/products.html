@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
-    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+
+    <title>Admin |Products</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
@@ -36,29 +37,28 @@
     </div>
 </nav>
 <div class="container-fluid">
-
-    <a th:href="@{/admin/products/add}" style="margin: 20px 0" class="btn btn-primary">Add Product</a>
-    <table class="table">
+    <a th:href = "@{/oauth/showNewProductForm}" class="btn btn-primary btn-sm mb-3"> Add Product </a>    <table class="table">
         <thead class="thead-light">
         <tr>
             <th scope="col">SN</th>
             <th scope="col">Product Name</th>
             <th scope="col">Category</th>
-            <th scope="col">Preview</th>
-            <th scope="col">Delete</th>
-            <th scope="col">Update</th>
+
+
+            <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
 
-        <tr th:each="product, iStat : ${products}">
-            <th scope="row" th:text="${iStat.index + 1}">1</th>
-            <td th:text="${product.name}">Larry</td>
-            <td th:text="${product.category.name}">Larry</td>
-            <td><img src="" height="100px" width="100px"  th:src="@{${'/productImages/' + product.imageName}}"></td>
 
-            <td><a href="" th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn btn-danger">Delete</a></td>
-            <td><a href="" th:href="@{/admin/product/update/{id}(id=${product.id})}" class="btn btn-warning">Update</a></td>
+        <tr th:each="product : ${list}">
+            <td th:text="${product.id}"></td>
+            <td>_____</td>
+
+            <td th:text="${product.category.name}"></td>
+            <td><a  class="btn btn-danger"><i class="fa fa-trash"></i></a>
+
+            <a  class="btn btn-warning"><i class="fa fa-edit"></i></a></td>
 
         </tr>
         </tbody>
