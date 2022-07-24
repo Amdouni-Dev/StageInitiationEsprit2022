@@ -29,6 +29,7 @@ public class PromotionDto implements Serializable {
   private Date dateDebut;
   private Date dateFin;
   private int pourcentageReduction;
+  private int pourcentageAugmentation;
 
   private transient Employee employee;
   private transient Product product;
