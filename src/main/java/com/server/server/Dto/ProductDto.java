@@ -36,6 +36,10 @@ public class ProductDto implements Serializable {
     private Date dateUpdDescription;
 
     private String sku;
+    private String name;
+    private String description;
+    private String url;
+    private String isoCode;
     private  float weight;
     private  float height;
     private  float width;
@@ -44,7 +48,7 @@ public class ProductDto implements Serializable {
     private String categories;
     private Date dateUpdImages;
     private Date dateUpdStock;
-    private boolean active;
+    //private boolean active;
     private float wholesalePrice;
     private float retailPrice;
     private float inShopsPrice;

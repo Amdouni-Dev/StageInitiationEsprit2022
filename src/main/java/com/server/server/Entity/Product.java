@@ -5,9 +5,16 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.beans.factory.annotation.Value;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @NoArgsConstructor
@@ -19,22 +26,21 @@ import lombok.*;
 public class Product {
     @Id
     private long id;
-
+    private String sku;
     private String name;
     private String description;
-    private Date dateUpdDescription;
-
-    private String sku;
+    private String url;
+    private String isoCode;
     private  float weight;
     private  float height;
-
     private  float width;
     private  float depth;
     private Date dateUpd;
     private String categories;
+    private Date dateUpdDescription;
     private Date dateUpdImages;
     private Date dateUpdStock;
-    private boolean active;
+    //private boolean active;
     private float wholesalePrice;
     private float retailPrice;
     private float inShopsPrice;

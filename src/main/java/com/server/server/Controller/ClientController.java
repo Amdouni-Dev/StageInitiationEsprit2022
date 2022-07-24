@@ -15,13 +15,16 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.server.server.Dto.ClientDto;
+import com.server.server.Dto.EmployeeDto;
 import com.server.server.Dto.PromotionDto;
 import com.server.server.Entity.Client;
+import com.server.server.Entity.Employee;
 import com.server.server.Entity.Promotion;
 import com.server.server.Payload.Response.JwtResponse;
 import com.server.server.Repository.ClientRepository;
@@ -108,6 +111,24 @@ public class ClientController {
     } else {
       return new ResponseEntity<>(NULL, HttpStatus.OK);
 
+    }
+  }
+
+  //update client profile
+  @PutMapping(value = "/editProfileClient/{id}")
+  public ResponseEntity<Object> updateProfileClient(@PathVariable("id") long id, @RequestBody ClientDto clientDto) {
+    Client clientReq = modelMapper.map(clientDto, Client.class);
+    ResponseEntity<Client> client = clientService.editProfileClient(id, clientReq);
+
+    if (client.getStatusCodeValue() == 200) {
+      ClientDto clientRes = modelMapper.map(client.getBody(), ClientDto.class);
+      return new ResponseEntity<>(clientRes, HttpStatus.OK);
+    } else if(client.getStatusCodeValue() == 400) {
+      return new ResponseEntity<>(BAD_REQUEST, HttpStatus.BAD_REQUEST);
+    } else if(client.getStatusCodeValue() == 404){
+      return new ResponseEntity<>(NOT_FOUND,HttpStatus.OK);
+    }else{
+      return new ResponseEntity<>(NULL,HttpStatus.OK);
     }
   }
 }

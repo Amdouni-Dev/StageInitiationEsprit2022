@@ -30,6 +30,7 @@ public class Promotion {
   private Date dateDebut;
   private Date dateFin;
   private int pourcentageReduction;
+  private int pourcentageAugmentation;
 
   @ManyToOne()
   private Employee employee;
