@@ -53,7 +53,6 @@ public class ProductService {
     }
 
     //delete product into cart
-
     public void deleteProductByIdAndShoppingCart(long id_product,long id_shoppingCart) {
         productRepository.deleteProductByIdAndShoppingCart(id_product,id_shoppingCart);
     }
