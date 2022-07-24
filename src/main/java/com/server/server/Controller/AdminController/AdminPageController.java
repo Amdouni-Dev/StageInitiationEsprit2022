@@ -23,7 +23,7 @@ public class AdminPageController {
     @GetMapping("/Admin_Products")
     public ModelAndView viewHomePage2() {
 
-
+//
         ModelAndView modelAndView = new ModelAndView("products");
         List<Product> products=productService.findAll();
         modelAndView.addObject("list",products);
