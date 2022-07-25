@@ -67,6 +67,10 @@ public class ProductService {
         return ResponseEntity.ok(product);
 
     }
+    public List<Product> findAll() {
+
+        return productRepository.findAll();
+    }
 
 }
 
