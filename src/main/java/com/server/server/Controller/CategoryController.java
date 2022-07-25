@@ -40,15 +40,16 @@ public class CategoryController {
         };
 
     }
-    @GetMapping("/getCategory")
-    public List<CategoryDto> getPromotions() {
+    //get all categories
+    @GetMapping("/getCategories")
+    public List<CategoryDto> getCategories() {
         return categoryService.getCategory().stream().map(category -> modelMapper.map(category, CategoryDto.class))
                 .collect(Collectors.toList());
     }
 
-    //get product by id
+    //get category by id
     @GetMapping(value = "/getCategory/{id}")
-    public ResponseEntity<Object> getProduct(@PathVariable("id") long id) {
+    public ResponseEntity<Object> getCategory(@PathVariable("id") long id) {
         ResponseEntity<Category> category = categoryService.getCategory(id);
         if (category.getStatusCodeValue() == 200) {
             CategoryDto categoryDto = modelMapper.map(category.getBody(), CategoryDto.class);
