@@ -23,9 +23,10 @@ public class CategoryService {
     }
 
     //get all categs
-    public List<Category> getCategory() {
+    public List<Category> getCategories() {
         return categoryRepository.findAll();
     }
+
     //get by id
     public ResponseEntity<Category> getCategory(long id) {
 

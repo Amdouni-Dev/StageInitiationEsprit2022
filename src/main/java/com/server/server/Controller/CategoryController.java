@@ -43,7 +43,7 @@ public class CategoryController {
     //get all categories
     @GetMapping("/getCategories")
     public List<CategoryDto> getCategories() {
-        return categoryService.getCategory().stream().map(category -> modelMapper.map(category, CategoryDto.class))
+        return categoryService.getCategories().stream().map(category -> modelMapper.map(category, CategoryDto.class))
                 .collect(Collectors.toList());
     }
 
