@@ -12,6 +12,8 @@
     <title>Admin |Products.</title>
 </head>
 <body>
+<h1>Settings</h1>
+<div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -36,13 +38,18 @@
         </div>
     </div>
 </nav>
+
+
 <div class="container-fluid">
     <a th:href = "@{/oauth/showNewProductForm}" class="btn btn-primary btn-sm mb-3"> Add Product </a>    <table class="table">
         <thead class="thead-light">
         <tr>
             <th scope="col">SN</th>
             <th scope="col">Product Name</th>
-            <th scope="col">Category</th>
+            <th scope="col">Product Weight</th>
+            <th scope="col">Product height</th>
+            <th scope="col">Product width</th>
+            <th scope="col">Product price</th>
 
 
             <th scope="col">Actions</th>
@@ -53,12 +60,15 @@
 
         <tr th:each="product : ${list}">
             <td th:text="${product.id}"></td>
-            <td>_____</td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.weight}"></td>
+            <td th:text="${product.height}"></td>
+            <td th:text="${product.width}"></td>
+            <td th:text="${product.retailPrice}"></td>
 
-            <td th:text="${product.category.name}"></td>
-            <td><a  class="btn btn-danger"><i class="fa fa-trash"></i></a>
 
-            <a  class="btn btn-warning"><i class="fa fa-edit"></i></a></td>
+            <td><a th:href="@{/oauth/deleteProduct/{id}(id=${product.id})}"  class="btn btn-danger"><i class="fa fa-trash"></i></a>
+            <a th:href="@{/oauth/showFormForUpdate/{id}(id=${product.id})}"  class="btn btn-warning"><i class="fa fa-edit"></i></a></td>
 
         </tr>
         </tbody>

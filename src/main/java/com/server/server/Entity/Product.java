@@ -40,7 +40,7 @@ public class Product {
     private Date dateUpdDescription;
     private Date dateUpdImages;
     private Date dateUpdStock;
-    //private boolean active;
+   // private boolean active;
     private float wholesalePrice;
     private float retailPrice;
     private float inShopsPrice;
