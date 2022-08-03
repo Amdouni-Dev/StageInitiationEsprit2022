@@ -2,6 +2,7 @@ package com.server.server.Service;
 
 import com.server.server.Entity.Product;
 import com.server.server.Entity.Promotion;
+import com.server.server.Entity.Review;
 import com.server.server.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -91,6 +92,13 @@ public class ProductService {
     }
     public void deleteProductById(long id) {
         this.productRepository.deleteById(id);
+    }
+
+    // get product by id-category
+    public List<Product> findProductByCategory_Id(long id_category) {
+
+        return productRepository.findAllByCategoryId(id_category);
+
     }
 }
 
