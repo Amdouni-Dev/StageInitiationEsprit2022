@@ -44,7 +44,7 @@ public class ProductController {
 
   //get all promotions
   @GetMapping("/getProducts")
-  public List<ProductDto> getPromotions() {
+  public List<ProductDto> getProducts() {
     return productService.getProducts().stream().map(product -> modelMapper.map(product, ProductDto.class))
         .collect(Collectors.toList());
   }
