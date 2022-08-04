@@ -16,7 +16,6 @@ import javax.persistence.OneToOne;
 @Entity
 public class Stocks {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long quantity;
     private long minHandlingDays;
