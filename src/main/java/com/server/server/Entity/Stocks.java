@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Data
 @NoArgsConstructor
@@ -21,4 +22,6 @@ public class Stocks {
     private long minHandlingDays;
     private long maxHandlingDays;
 
+    @OneToOne()
+    private Product product;
 }
