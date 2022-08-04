@@ -96,4 +96,24 @@ public class ProductController {
         .collect(Collectors.toList());
   }
 
+
+
+
+
+  // insert product in shoppingCart
+
+  @PostMapping("/addProductinShoppingCart/{id_shoppingCart}/{id_client}")
+  public ResponseEntity<Object> addProductinShoppingCart(@RequestBody ProductDto productDto, @PathVariable("id_shoppingCart") long id_shoppingCart, @PathVariable("id_client") long id_client) {
+    Product productReq = modelMapper.map(productDto,Product.class);
+    ResponseEntity<Product> product = productService.addProductinShoppingCart(productReq,id_shoppingCart,id_client);
+    if (product.getStatusCodeValue() == 200) {
+      ProductDto productRes = modelMapper.map(product.getBody(),ProductDto.class);
+      return new ResponseEntity<>(productRes, HttpStatus.OK);
+    } else if (product.getStatusCodeValue() == 400) {
+      return new ResponseEntity<>(BAD_REQUEST, HttpStatus.BAD_REQUEST);
+    } else {
+      return new ResponseEntity<>(FOUND, HttpStatus.FOUND);
+    }
+  }
+
 }

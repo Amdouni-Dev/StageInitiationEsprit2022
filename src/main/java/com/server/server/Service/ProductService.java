@@ -1,9 +1,9 @@
 package com.server.server.Service;
 
-import com.server.server.Entity.Product;
-import com.server.server.Entity.Promotion;
-import com.server.server.Entity.Review;
+import com.server.server.Entity.*;
 import com.server.server.Repository.ProductRepository;
+import com.server.server.Repository.ReviewRepository;
+import com.server.server.Repository.ShoppingCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +19,9 @@ public class ProductService {
 
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    ShoppingCartRepository shoppinCartRepository;
 
     //get all products
     public List<Product> getProducts() {
@@ -100,6 +103,26 @@ public class ProductService {
         return productRepository.findAllByCategoryId(id_category);
 
     }
+
+
+
+
+    // insert product in shoppingCart
+    public ResponseEntity<Product> addProductinShoppingCart(Product product,long id_shopping_cart,long id_client) {
+        if (product == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        Optional<ShoppingCart> shoppingCart = shoppinCartRepository.findById(id_client);
+
+        // set columns
+
+        product.setShoppingCart(shoppingCart.get());
+        productRepository.save(product);
+        return ResponseEntity.ok(product);
+
+    }
+
 }
 
 
