@@ -102,10 +102,10 @@ public class ProductController {
 
   // insert product in shoppingCart
 
-  @PostMapping("/addProductinShoppingCart/{id_shoppingCart}/{id_client}")
-  public ResponseEntity<Object> addProductinShoppingCart(@RequestBody ProductDto productDto, @PathVariable("id_shoppingCart") long id_shoppingCart, @PathVariable("id_client") long id_client) {
+  @PostMapping("/addProductInShoppingCart/{id_shoppingCart}/{id_client}")
+  public ResponseEntity<Object> addProductInShoppingCart(@RequestBody ProductDto productDto, @PathVariable("id_shoppingCart") long id_shoppingCart, @PathVariable("id_client") long id_client) {
     Product productReq = modelMapper.map(productDto,Product.class);
-    ResponseEntity<Product> product = productService.addProductinShoppingCart(productReq,id_shoppingCart,id_client);
+    ResponseEntity<Product> product = productService.addProductInShoppingCart(productReq,id_shoppingCart,id_client);
     if (product.getStatusCodeValue() == 200) {
       ProductDto productRes = modelMapper.map(product.getBody(),ProductDto.class);
       return new ResponseEntity<>(productRes, HttpStatus.OK);

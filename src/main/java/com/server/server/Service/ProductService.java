@@ -108,12 +108,12 @@ public class ProductService {
 
 
     // insert product in shoppingCart
-    public ResponseEntity<Product> addProductinShoppingCart(Product product,long id_shopping_cart,long id_client) {
+    public ResponseEntity<Product> addProductInShoppingCart(Product product,long id_shopping_cart,long id_client) {
         if (product == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        Optional<ShoppingCart> shoppingCart = shoppinCartRepository.findById(id_client);
+        Optional<ShoppingCart> shoppingCart = shoppinCartRepository.findById(id_shopping_cart);
 
         // set columns
 
