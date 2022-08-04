@@ -113,7 +113,7 @@ public class ProductService {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        Optional<ShoppingCart> shoppingCart = shoppinCartRepository.findById(id_client);
+        Optional<ShoppingCart> shoppingCart = shoppinCartRepository.findById(id_shopping_cart);
 
         // set columns
 
