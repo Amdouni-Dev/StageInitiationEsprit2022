@@ -36,8 +36,6 @@ public class ProductDto implements Serializable {
     private Date dateUpdDescription;
 
     private String sku;
-    private String name;
-    private String description;
     private String url;
     private String isoCode;
     private  float weight;
