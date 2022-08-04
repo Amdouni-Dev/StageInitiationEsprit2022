@@ -10,7 +10,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -20,9 +22,10 @@ import java.util.List;
 @Getter
 @Setter
 public class ShoppingCartDto implements Serializable {
-  private long id;
 
+  private long id;
   private transient Client client;
-  private transient List<Product> products;
+  private Date date_adding_product;
+  private Product product;
 
 }
