@@ -78,8 +78,11 @@ public class Product {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     private List<Review> reviews;
 
-    @ManyToOne()
-    private ShoppingCart shoppingCart;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private List<ShoppingCart> shoppingCarts;
+
 
     @ManyToOne()
     private Orders orders;

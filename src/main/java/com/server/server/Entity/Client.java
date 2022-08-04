@@ -49,8 +49,9 @@ import java.util.*;
   private List<Orders> orders;
 
   @JsonIgnore
-  @OneToOne(cascade = CascadeType.MERGE,mappedBy = "client")
-  private ShoppingCart shoppingCart;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
+  private List<ShoppingCart> shoppingCarts;
+
 
 
   @JsonIgnore
