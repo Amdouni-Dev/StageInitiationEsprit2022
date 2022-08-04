@@ -8,6 +8,7 @@ import com.server.server.Entity.Review;
 import com.server.server.Entity.Orders;
 import com.server.server.Entity.ShoppingCart;
 import com.server.server.Entity.Promotion;
+import com.server.server.Entity.Stocks;
 import com.server.server.Entity.Tags;
 
 import lombok.AllArgsConstructor;
@@ -81,6 +82,7 @@ public class ProductDto implements Serializable {
     //private PriceLargeQuantities priceLargeQuantities;*/
 
     private transient Promotion promotion;
+    private transient Stocks stocks;
     private transient List<Review> reviews;
     private transient ShoppingCart shoppingCart;
     private transient Orders orders;

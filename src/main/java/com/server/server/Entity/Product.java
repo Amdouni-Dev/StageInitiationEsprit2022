@@ -70,6 +70,10 @@ public class Product {
     @OneToOne(cascade = CascadeType.MERGE,mappedBy = "product")
     private Promotion promotion;
 
+  @JsonIgnore
+  @OneToOne(cascade = CascadeType.MERGE,mappedBy = "product")
+  private Stocks stocks;
+
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     private List<Review> reviews;
