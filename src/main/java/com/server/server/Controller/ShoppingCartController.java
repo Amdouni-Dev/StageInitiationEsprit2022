@@ -53,7 +53,7 @@ public class ShoppingCartController {
 
 
 
-    // get Review by id-product and id_client
+    // get Product by id-product and id_client
     @GetMapping(value = "/findByProductIdAndAndClientId/{id_product}/{id_client}")
     public ResponseEntity<Object>  findByProduct_IdAndAndClient_Id(@PathVariable("id_product") long id_product,@PathVariable("id_client") long id_client) {
         ResponseEntity<ShoppingCart> shoppingCartResponseEntity = shoppingCartService.findByProductIdAndAndClientId(id_product,id_client);
