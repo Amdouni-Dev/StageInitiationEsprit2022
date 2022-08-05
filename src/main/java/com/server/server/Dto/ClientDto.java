@@ -1,3 +1,4 @@
+
 package com.server.server.Dto;
 
 import java.io.Serializable;
@@ -47,9 +48,10 @@ public class ClientDto implements Serializable{
   private transient List <Review> reviews;
   private transient List <Orders> orders;
 
-  private transient ShoppingCart shoppingCart;
+  private transient List<ShoppingCart> shoppingCarts;
 
   private transient List <Reclamation> reclamations;
+
 
 }
 

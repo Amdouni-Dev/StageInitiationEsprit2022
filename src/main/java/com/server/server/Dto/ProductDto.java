@@ -84,7 +84,7 @@ public class ProductDto implements Serializable {
     private transient Promotion promotion;
     private transient Stocks stocks;
     private transient List<Review> reviews;
-    private transient ShoppingCart shoppingCart;
+    private transient List<ShoppingCart> shoppingCarts;
     private transient Orders orders;
     private transient Category category;
     private transient List<Images> images;

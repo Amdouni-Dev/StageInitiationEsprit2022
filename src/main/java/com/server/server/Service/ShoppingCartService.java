@@ -83,7 +83,7 @@ public class ShoppingCartService {
 
 
     // + quantity
-
+/*
     public ResponseEntity<ShoppingCart> IncrementQuantityProduct(long id_product, long id_client) {
 
         ResponseEntity<ShoppingCart> shoppingCart= findByProductIdAndAndClientId(id_product,id_client);
@@ -111,7 +111,7 @@ public class ShoppingCartService {
     }
 
 
-
+*/
     // - quantity
 
 }

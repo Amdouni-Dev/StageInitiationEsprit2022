@@ -40,7 +40,7 @@ public class Product {
     private Date dateUpdDescription;
     private Date dateUpdImages;
     private Date dateUpdStock;
-   // private boolean active;
+    // private boolean active;
     private float wholesalePrice;
     private float retailPrice;
     private float inShopsPrice;
@@ -70,16 +70,19 @@ public class Product {
     @OneToOne(cascade = CascadeType.MERGE,mappedBy = "product")
     private Promotion promotion;
 
-  @JsonIgnore
-  @OneToOne(cascade = CascadeType.MERGE,mappedBy = "product")
-  private Stocks stocks;
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.MERGE,mappedBy = "product")
+    private Stocks stocks;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     private List<Review> reviews;
 
-    @ManyToOne()
-    private ShoppingCart shoppingCart;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private List<ShoppingCart> shoppingCarts;
+
 
     @ManyToOne()
     private Orders orders;
@@ -100,5 +103,3 @@ public class Product {
     private List<Attributes> attributes;
 
 }
-
-
