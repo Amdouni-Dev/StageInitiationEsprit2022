@@ -71,10 +71,7 @@ public class ProductService {
         }
     }
 
-    //delete product into cart
-    public void deleteProductByIdAndShoppingCart(long id_product,long id_shoppingCart) {
-        productRepository.deleteProductByIdAndShoppingCart(id_product,id_shoppingCart);
-    }
+
 
 
     public ResponseEntity<Product> addProduct(Product product) {
@@ -107,21 +104,6 @@ public class ProductService {
 
 
 
-    // insert product in shoppingCart
-    public ResponseEntity<Product> addProductInShoppingCart(Product product,long id_shopping_cart,long id_client) {
-        if (product == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-
-        Optional<ShoppingCart> shoppingCart = shoppinCartRepository.findById(id_shopping_cart);
-
-        // set columns
-
-        product.setShoppingCart(shoppingCart.get());
-        productRepository.save(product);
-        return ResponseEntity.ok(product);
-
-    }
 
 }
 

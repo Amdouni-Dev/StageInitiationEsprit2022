@@ -96,7 +96,7 @@ public class ShoppingCartController {
 
 
     //Increment Quantity Product
-
+/*
     @PostMapping("IncrementQuantityProduct/{id_product}/{id_client}")
     public ResponseEntity<Object> IncrementQuantityProduct(@RequestBody ShoppingCartDto shoppingCartDto, @PathVariable("id_product") long id_product, @PathVariable("id_client") long id_client) {
         ShoppingCart shoppingCartReq = modelMapper.map(shoppingCartDto,ShoppingCart.class);
@@ -112,7 +112,7 @@ public class ShoppingCartController {
     }
 
 
-
+*/
 
 
 
