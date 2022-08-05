@@ -15,7 +15,6 @@ import com.server.server.Entity.Review;
 public interface ProductRepository extends JpaRepository<Product,Long> {
 
 
-    void deleteProductByIdAndShoppingCart(long id_product,long id_shoppingCart);
 
     public List<Product> findAllByCategoryId(long id_category);
 }

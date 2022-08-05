@@ -84,6 +84,31 @@ public class ShoppingCartService {
 
     // + quantity
 
+    public ResponseEntity<ShoppingCart> IncrementQuantityProduct(long id_product, long id_client) {
+
+        ResponseEntity<ShoppingCart> shoppingCart= findByProductIdAndAndClientId(id_product,id_client);
+        if (shoppingCart == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        Optional<Client> client = clientRepository.findById(id_client);
+        Optional<Product> product = productRepository.findById(id_product);
+        System.out.println("************************************"+shoppingCart.getBody());
+        // set columns
+        if(shoppingCart.getBody().getProduct().equals(product) &&   shoppingCart.getBody().getClient().equals(client) )
+        {
+            shoppingCart.getBody().setQuantity(shoppingCart.getBody().getQuantity()+1);
+
+            shoppingCartRepository.save(shoppingCart);
+            return ResponseEntity.ok(shoppingCart);
+
+        }
+
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
 
 
 
