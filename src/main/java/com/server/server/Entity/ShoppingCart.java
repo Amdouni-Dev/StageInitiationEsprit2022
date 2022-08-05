@@ -34,4 +34,10 @@ public class ShoppingCart {
   @ManyToOne
   private Client client;
 
+
+
+
 }
+
+
+

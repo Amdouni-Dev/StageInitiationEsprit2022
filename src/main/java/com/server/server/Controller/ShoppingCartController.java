@@ -86,6 +86,7 @@ public class ShoppingCartController {
 
 
 
+
     // delete  Product existing in shopping cart By id_product AND id_client
     @DeleteMapping(value = "/deleteProductInShoppingCartByProductAndClient/{id_product}/{id_client}")
     public  void deleteProductInShoppingCartByProductAndClient(@PathVariable("id_product") long id_product,@PathVariable("id_client") long id_client) {

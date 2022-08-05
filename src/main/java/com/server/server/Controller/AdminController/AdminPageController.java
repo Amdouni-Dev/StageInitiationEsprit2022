@@ -1,16 +1,15 @@
 package com.server.server.Controller.AdminController;
 
 import com.server.server.Dto.ProductDto;
-import com.server.server.Entity.Category;
-import com.server.server.Entity.Orders;
-import com.server.server.Entity.Product;
-import com.server.server.Entity.ShoppingCart;
+import com.server.server.Entity.*;
 import com.server.server.Service.CategoryService;
+import com.server.server.Service.EmployeeService;
 import com.server.server.Service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -29,6 +28,10 @@ public class AdminPageController {
     private ProductService productService;
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private EmployeeService employeeService;
+
     // En tant qu'admin je veux consulter ma page Home
     @GetMapping("/HomeAdmin")
     public ModelAndView viewHomePage1() {
@@ -82,7 +85,7 @@ public class AdminPageController {
         product.setWidth(1);
         product.setCategory(new Category());
         product.setOrders(new Orders());
-        product.setShoppingCart(new ShoppingCart());
+        //product.setShoppingCart(new ShoppingCart());
         product.setIsoCode("12");
 
         product.setUrl("12");
@@ -140,4 +143,26 @@ public class AdminPageController {
         return modelAndView;
     }
 
+    //en tant qu'admin je peux consulter la liste des employées
+    @GetMapping("/listAll")
+    public ModelAndView listAllEmployees(){
+        ModelAndView modelAndView = new ModelAndView("employees");
+        List<Employee> employees=employeeService.getEmployees();
+        modelAndView.addObject("list",employees);
+        return  modelAndView;
+    }
+
+    //en tant qu'admin je peux chercher un employé par son id
+    @GetMapping("/get/{id}")
+    public ModelAndView getEmployeeById(@PathVariable int id) {
+        ModelAndView modelAndView = new ModelAndView("employee");
+        modelAndView.addObject("Employee", employeeService.getEmployee(id));
+        return modelAndView;
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteEmployee(@PathVariable int id) {
+        employeeService.deleteEmployee(id);
+        return "redirect:/listAll";
+    }
 }

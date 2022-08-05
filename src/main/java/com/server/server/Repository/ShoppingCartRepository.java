@@ -25,6 +25,7 @@ public interface ShoppingCartRepository extends JpaRepository<ShoppingCart,Long>
     void deleteShoppingCartByProductAndClient(@Param("id_product") long id_product, @Param("id_client") long id_client);
 
 
+
     public Optional<ShoppingCart> findByProductIdAndAndClientId(long id_product, long id_client);
 
 
