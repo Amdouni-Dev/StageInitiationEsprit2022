@@ -1,5 +1,6 @@
 package com.server.server.Entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -23,11 +24,14 @@ public class ShoppingCart {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  @OneToOne()
-  private Client client;
+  private long quantity;
 
-  @JsonIgnore
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "shoppingCart")
-  private List<Product> products;
+  private Date date_adding_product;
+
+  @ManyToOne
+  private Product product;
+
+  @ManyToOne
+  private Client client;
 
 }
