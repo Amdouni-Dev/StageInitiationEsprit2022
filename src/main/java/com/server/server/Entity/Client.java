@@ -49,10 +49,10 @@ public class Client {
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
   private List<Orders> orders;
 
-
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
   private List<ShoppingCart> shoppingCarts;
+
 
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
