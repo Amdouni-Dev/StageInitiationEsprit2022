@@ -83,11 +83,7 @@ public class ProductController {
     }
   }
 
-  @DeleteMapping(value = "deleteProductByIdAndShoppingCart/{id_product}/{id_shoppingCart}")
-  public void deleteProductByIdAndShoppingCart(@PathVariable("id_product") long id_product, @PathVariable("id_shoppingCart") long id_shoppingCart) {
-    productService.deleteProductByIdAndShoppingCart(id_product, id_shoppingCart);
 
-  }
 
   // get Product by id-category
   @GetMapping(value = "/findProductByCategory_Id/{id_category}")
@@ -98,22 +94,5 @@ public class ProductController {
 
 
 
-
-
-  // insert product in shoppingCart
-
-  @PostMapping("/addProductInShoppingCart/{id_shoppingCart}/{id_client}")
-  public ResponseEntity<Object> addProductInShoppingCart(@RequestBody ProductDto productDto, @PathVariable("id_shoppingCart") long id_shoppingCart, @PathVariable("id_client") long id_client) {
-    Product productReq = modelMapper.map(productDto,Product.class);
-    ResponseEntity<Product> product = productService.addProductInShoppingCart(productReq,id_shoppingCart,id_client);
-    if (product.getStatusCodeValue() == 200) {
-      ProductDto productRes = modelMapper.map(product.getBody(),ProductDto.class);
-      return new ResponseEntity<>(productRes, HttpStatus.OK);
-    } else if (product.getStatusCodeValue() == 400) {
-      return new ResponseEntity<>(BAD_REQUEST, HttpStatus.BAD_REQUEST);
-    } else {
-      return new ResponseEntity<>(FOUND, HttpStatus.FOUND);
-    }
-  }
 
 }
