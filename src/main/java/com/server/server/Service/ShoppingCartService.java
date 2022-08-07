@@ -41,6 +41,7 @@ public class ShoppingCartService {
 
 
 
+
     // get Shopping cart by id-product and id_client
 
     public ResponseEntity<ShoppingCart> findByProductIdAndAndClientId(long id_product, long id_client) {
@@ -55,7 +56,10 @@ public class ShoppingCartService {
     }
 
 
+    // add product in shopping cart by a specify client
+
 // add product in shopping cart by a specify client
+
     public ResponseEntity<ShoppingCart> addProductInShoppingCartByClient(ShoppingCart shoppingCart, long id_product, long id_client) {
         if (shoppingCart == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -68,6 +72,7 @@ public class ShoppingCartService {
         shoppingCart.setDate_adding_product(new Timestamp(System.currentTimeMillis()));
         shoppingCart.setProduct(product.get());
         shoppingCart.setClient(client.get());
+        shoppingCart.setQuantity(shoppingCart.getQuantity()+1);
 
         shoppingCartRepository.save(shoppingCart);
         return ResponseEntity.ok(shoppingCart);
@@ -114,3 +119,8 @@ public class ShoppingCartService {
     // - quantity
 
 }
+
+
+
+
+

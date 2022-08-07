@@ -84,13 +84,14 @@ public class ProductController {
   }
 
 
-
   // get Product by id-category
   @GetMapping(value = "/findProductByCategory_Id/{id_category}")
   public List<ProductDto> findProductByCategory_Id(@PathVariable("id_category") long id_category) {
     return productService.findProductByCategory_Id(id_category).stream().map(prod -> modelMapper.map(prod, ProductDto.class))
         .collect(Collectors.toList());
   }
+
+
 
 
 

@@ -54,8 +54,6 @@ public class Client {
   private List<ShoppingCart> shoppingCarts;
 
 
-
-
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
   private List<Reclamation> reclamations;

@@ -25,8 +25,11 @@ import java.util.List;
 public class ShoppingCartDto implements Serializable {
 
   private long id;
+  private Date date_adding_product;
+  private long quantity;
+
+
   private transient Client client;
   private transient Product product;
-  private Date date_adding_product;
 
 }
