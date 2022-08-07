@@ -51,20 +51,7 @@ public class ShoppingCartController {
         }
     }
 
-    // add product in shopping cart by a specify client
-    @PostMapping("addProductInShoppingCartByClient/{id_product}/{id_client}")
-    public ResponseEntity<Object> addProductInShoppingCartByClient(@RequestBody ShoppingCartDto shoppingCartDto, @PathVariable("id_product") long id_product, @PathVariable("id_client") long id_client) {
-       ShoppingCart shoppingCartReq = modelMapper.map(shoppingCartDto,ShoppingCart.class);
-        ResponseEntity<ShoppingCart> shoppingCart = shoppingCartService.addProductInShoppingCartByClient(shoppingCartReq,id_product,id_client);
-        if (shoppingCart.getStatusCodeValue() == 200) {
-            ReviewDto avisRes = modelMapper.map(shoppingCart.getBody(), ReviewDto.class);
-            return new ResponseEntity<>(avisRes, HttpStatus.OK);
-        } else if (shoppingCart.getStatusCodeValue() == 400) {
-            return new ResponseEntity<>(BAD_REQUEST, HttpStatus.BAD_REQUEST);
-        } else {
-            return new ResponseEntity<>(FOUND, HttpStatus.FOUND);
-        }
-    }
+
 
 
     // get Product by id-product and id_client
@@ -99,12 +86,7 @@ public class ShoppingCartController {
     }
 
 
-    // delete  Product existing in shopping cart By id_product AND id_client
-    @DeleteMapping(value = "/deleteProductInShoppingCartByProductAndClient/{id_product}/{id_client}")
-    public  void deleteProductInShoppingCartByProductAndClient(@PathVariable("id_product") long id_product,@PathVariable("id_client") long id_client) {
 
-        shoppingCartService.deleteProductInShoppingCartByProductAndClient(id_product,id_client);
-    }
 
 
     // delete  Product existing in shopping cart By id_product AND id_client

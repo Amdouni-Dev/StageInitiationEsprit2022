@@ -83,11 +83,6 @@ public class ProductController {
     }
   }
 
-  @DeleteMapping(value = "deleteProductByIdAndShoppingCart/{id_product}/{id_shoppingCart}")
-  public void deleteProductByIdAndShoppingCart(@PathVariable("id_product") long id_product, @PathVariable("id_shoppingCart") long id_shoppingCart) {
-    productService.deleteProductByIdAndShoppingCart(id_product, id_shoppingCart);
-
-  }
 
   // get Product by id-category
   @GetMapping(value = "/findProductByCategory_Id/{id_category}")
