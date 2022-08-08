@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Admin |Update Product</title>
+
+    <link rel="stylesheet" th:href="@{/css/sidebar.css}">
+
+
+    <div th:insert="fragments/sidebar :: sidebar"></div>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+
+    <hr>
+    <h2>Editer Produit</h2>
+
+    <form enctype="multipart/form-data" action="#" th:action="@{/oauth/savePP}" th:object="${product}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+
+        <input type="hidden" th:field="*{id}" />
+        <input placeholder="Retaper le nom du produit" type="text" th:field="*{name}" class="form-control mb-4 col-4">
+        <input placeholder="Retaper l'hauteur ' du produit" type="text" th:field="*{height}" class="form-control mb-4 col-4">
+        <input placeholder="Retaper la largeur  du produit" type="text" th:field="*{width}" class="form-control mb-4 col-4">
+        <input placeholder="Retaper le volume du produit" type="text" th:field="*{weight}" class="form-control mb-4 col-4">
+        <textarea placeholder="Decrivez le produit" type="text" th:field="*{description}" class="form-control mb-4 col-4"></textarea>
+        <input  placeholder="Retaper le prix du produit" type="text" th:field="*{retailPrice}" class="form-control mb-4 col-4">
+        <input placeholder="choisissez une image " type="text" th:field="*{url}" class="form-control mb-4 col-4">
+
+
+        <div>
+
+            <div>
+                <select th:field="*{category.id}">
+                    <option th:each="cat : ${categories}"
+                            th:text="${cat.name}"
+                            th:value="${cat.id}">
+                </select>
+            </div>
+        </div>
+
+        <br/>
+        <br/>
+
+
+            ...
+            <div>
+
+                <label>Photos: </label>
+                <input type="file" name="image" accept="image/png, image/jpeg" />
+
+            </div>
+            ...
+
+        <button type="submit" class="btn btn-info col-2"> Update Product</button>
+    </form>
+
+    <hr>
+
+    <a th:href="@{/}"> Back to Product List</a>
+</div>
+<script th:src="@{/js/sidebar.js}"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

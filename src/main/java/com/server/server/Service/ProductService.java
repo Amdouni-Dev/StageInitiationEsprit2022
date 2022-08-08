@@ -5,6 +5,10 @@ import com.server.server.Repository.ProductRepository;
 import com.server.server.Repository.ReviewRepository;
 import com.server.server.Repository.ShoppingCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -92,8 +96,34 @@ public class ProductService {
 
 
 
+    public Page<Product> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
+        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
+                Sort.by(sortField).descending();
+
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
+        return this.productRepository.findAll(pageable);
+    }
+
+    public Product getProductById(long id) {
+        Optional<Product> optional = productRepository.findById(id);
+        Product product = null;
+        if (optional.isPresent()) {
+            product = optional.get();
+        } else {
+            throw new RuntimeException(" Product not found for id :: " + id);
+        }
+        return product;
+    }
 
 
+    public void saveProduct(Product product) {
+        this.productRepository.save(product);
+    }
+
+
+    public List<Product> getByKeyword(String keyword){
+        return productRepository.findByKeyword(keyword);
+    }
 }
 
 

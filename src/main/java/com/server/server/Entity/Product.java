@@ -25,6 +25,7 @@ import lombok.Setter;
 
 public class Product {
     @Id
+    @GeneratedValue
     private long id;
     private String sku;
     private String name;
@@ -101,5 +102,10 @@ public class Product {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     private List<Attributes> attributes;
+    @Transient
+    public String getUrl() {
+        if (url == null ) return null;
 
+        return "/user-photos/" + id + "/" + url;
+    }
 }

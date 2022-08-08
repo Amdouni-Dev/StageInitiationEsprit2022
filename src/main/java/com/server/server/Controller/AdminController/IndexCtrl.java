@@ -32,14 +32,4 @@ public class IndexCtrl {
 		return "/layouts/dashboard";
 	}
 
-
-
-
-
-	@RequestMapping("/showProducts")
-	public String viewHomePagdllkdkldk(Model model) {
-		List<Product> products=productService.findAll();
-		model.addAttribute("list",products);
-		return "/layouts/produits";
-	}
 }
