@@ -28,7 +28,11 @@ public class Product {
     private long id;
     private String sku;
     private String name;
+
+    @Lob
+    @Column(name="DESCRIPTION", length=99999)
     private String description;
+
     private String url;
     private String isoCode;
     private  float weight;

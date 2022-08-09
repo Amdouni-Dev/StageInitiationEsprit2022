@@ -28,7 +28,7 @@ import lombok.Setter;
 public class Images {
   @Id
   private long id;
-  private Boolean isCover;
+  private String isCover; // true or false
   private String name;
   private String url;
 
