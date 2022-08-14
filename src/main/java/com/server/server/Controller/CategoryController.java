@@ -4,6 +4,7 @@ import com.server.server.Dto.CategoryDto;
 import com.server.server.Dto.ProductDto;
 import com.server.server.Entity.Category;
 import com.server.server.Entity.Product;
+import com.server.server.Repository.CategoryRepository;
 import com.server.server.Service.CategoryService;
 import com.server.server.Service.ProductService;
 import org.modelmapper.ModelMapper;
@@ -29,6 +30,8 @@ public class CategoryController {
     @Autowired
     CategoryService categoryService;
     @Autowired
+    CategoryRepository categoryRepository;
+    @Autowired
     private ModelMapper modelMapper;
 
     HttpHeaders createHeaders(){
@@ -45,6 +48,13 @@ public class CategoryController {
     public List<CategoryDto> getCategories() {
         return categoryService.getCategories().stream().map(category -> modelMapper.map(category, CategoryDto.class))
                 .collect(Collectors.toList());
+    }
+
+
+    @GetMapping("/getCategoriesWithProducts")
+    public List<Category> getCategoriesWithProducts() {
+        List<Category> list=categoryRepository.findAllCategoriesNotEmpty();
+        return list;
     }
 
     //get category by id
