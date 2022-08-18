@@ -18,11 +18,7 @@ import javax.persistence.Id;
 
 import javax.persistence.ManyToOne;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
@@ -32,12 +28,14 @@ import lombok.Setter;
 @Entity
 public class Orders {
   @Id
+  @GeneratedValue
   private long id;
 
   private String  status;
   private String  address;
   private Date dateOrder;
   private String paymentMethod;
+  private int total;
 
 
 

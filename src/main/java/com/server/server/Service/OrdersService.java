@@ -29,6 +29,7 @@ public OrdersRepository repo;
 
     public Orders create(Orders order) {
         order.setDateOrder(new Date());
+
         return this.repo.save(order);
     }
 

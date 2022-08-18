@@ -2,6 +2,7 @@ package com.server.server.Controller;
 
 import com.server.server.Entity.Client;
 import com.server.server.Entity.Orders;
+import com.server.server.Repository.ClientRepository;
 import com.server.server.Repository.OrdersRepository;
 import com.server.server.Service.OrdersService;
 import org.hibernate.criterion.Order;
@@ -24,6 +25,8 @@ public class OrdersController {
 public OrdersService ordersService;
     @Autowired
     public OrdersRepository repo;
+    @Autowired
+    public ClientRepository repoClient;
 
 
 
@@ -48,12 +51,47 @@ public OrdersService ordersService;
 
     // Ajouter commande
     @PostMapping("/AjouterCommande")
+
     public Orders addNewOrder(@Valid @RequestBody Orders o) throws Exception {
         return ordersService.create(o);
     }
 
+    // Mettre a jour commande
+    @PostMapping("/UpdateCommande{id}")
+    public Orders updateOrder(@Valid @RequestBody Orders o) throws Exception {
+        return ordersService.create(o);
+    }
+// get client by commande
 
+    @GetMapping("/getClientByCommandId/{id_commande}")
+    public Client getClientBycommande(@PathVariable("id_commande") long id_commande){
+        return repoClient.findClientByCommandID(id_commande);
+    }
 
+// get Command by client
+    @GetMapping("/getCommandBylientId/{id_client}")
+    public List<Orders> getCommandByClient(@PathVariable("id_client") long id_client){
+        return repo.findCommandBylientID(id_client);
+    }
 
+// delete orders by id
+
+    @DeleteMapping("/deleteCommandByIdC/{id}")
+    public ResponseEntity<String> deleteByName(@PathVariable long id) {
+        return new ResponseEntity<String>(repo.deleteOrdersById(id)+" Commande(s) supprimée(s)", HttpStatus.OK);
+    }
+// delete all orders by client id
+    @DeleteMapping("/deleteCommandByClientId/{id}")
+    public ResponseEntity<String> deleteCommandByClientId(@PathVariable long id) {
+        return new ResponseEntity<String>(repo.deleteAllByClientId(id)+" Commande(s) supprimée(s)", HttpStatus.OK);
+    }
+
+// supprimer toutes les commandes 
+    @DeleteMapping("/deleteAllOrderes")
+    public ResponseEntity<String> deleteAllOrders() {
+       repo.deleteAll() ;
+        return new ResponseEntity<String>(" toute(s) les  Commande(s) sont  supprimée(s)", HttpStatus.OK);
+
+    }
 
 }
