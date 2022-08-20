@@ -1,8 +1,10 @@
 package com.server.server.Controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Optional;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,20 +14,10 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.server.server.Dto.ClientDto;
-import com.server.server.Dto.EmployeeDto;
-import com.server.server.Dto.PromotionDto;
 import com.server.server.Entity.Client;
-import com.server.server.Entity.Employee;
-import com.server.server.Entity.Promotion;
 import com.server.server.Payload.Response.JwtResponse;
 import com.server.server.Repository.ClientRepository;
 import com.server.server.Security.Jwt.JwtUtils;
@@ -130,5 +122,16 @@ public class ClientController {
     }else{
       return new ResponseEntity<>(NULL,HttpStatus.OK);
     }
+  }
+  //get current client
+  @CrossOrigin
+  @GetMapping(value = "/client")
+  public ResponseEntity<Optional<Client>> getCurrentClient(HttpServletRequest request){
+    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    Optional<Client> client = clientRepository.findByEmail(((ClientDetails) principal).getEmail());
+    if(client.isPresent())
+      return ResponseEntity.ok(client);
+    else
+      return null;
   }
 }
