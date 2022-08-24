@@ -91,7 +91,11 @@ public class ProductController {
         .collect(Collectors.toList());
   }
 
-
+  @GetMapping(value = "/findProductByName/{name}")
+  public List<Product> FindProductByName(@PathVariable("name") String name)
+  {
+      return productService.getByKeyword(name);
+  }
 
 
 
