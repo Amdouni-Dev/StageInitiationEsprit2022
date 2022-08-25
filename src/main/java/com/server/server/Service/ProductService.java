@@ -2,7 +2,6 @@ package com.server.server.Service;
 
 import com.server.server.Entity.*;
 import com.server.server.Repository.ProductRepository;
-import com.server.server.Repository.ReviewRepository;
 import com.server.server.Repository.ShoppingCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,8 +11,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +27,12 @@ public class ProductService {
     //get all products
     public List<Product> getProducts() {
         return productRepository.findAll();
+    }
+
+    //get products paginated
+    public Page<Product> getProductsWithPagination(int offset){
+        Page<Product> productsPaginated = productRepository.findAll(PageRequest.of(offset, 10));
+        return productsPaginated;
     }
 
     //get product by id

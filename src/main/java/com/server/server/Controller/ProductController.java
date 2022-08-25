@@ -1,14 +1,11 @@
 package com.server.server.Controller;
 
 import com.server.server.Dto.ProductDto;
-import com.server.server.Dto.PromotionDto;
-import com.server.server.Dto.ReviewDto;
 import com.server.server.Entity.Product;
-import com.server.server.Entity.Promotion;
-import com.server.server.Entity.Review;
 import com.server.server.Service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -47,6 +44,13 @@ public class ProductController {
   public List<ProductDto> getProducts() {
     return productService.getProducts().stream().map(product -> modelMapper.map(product, ProductDto.class))
         .collect(Collectors.toList());
+  }
+
+  //get products paginated
+  @GetMapping("/pagination/{offset}")
+  public ResponseEntity<Page<Product>> getProductsPaginated(@PathVariable int offset){
+    Page<Product> productPaginated = productService.getProductsWithPagination(offset);
+    return new ResponseEntity<>(productPaginated, HttpStatus.OK);
   }
 
   //get product by id
